@@ -1,0 +1,21 @@
+<?xml version="1.0"?> 
+<package >
+  <metadata>
+    <id>ACTIVE_DIRECTORY_API</id>
+    <version>$version$</version>
+    <authors>Maestral Solutions</authors>
+    <owners>Maestral Solutions</owners>
+    <licenseUrl>http://www.maestralsolutions.com/</licenseUrl>
+    <projectUrl>http://www.maestralsolutions.com/</projectUrl>
+    <iconUrl>http://www.maestralsolutions.com/</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>NuGet Nuspec for Var Dynamics Active Directory API on Cloud Plus v2</description>
+    <copyright>Copyright Maestral Solutions 2017</copyright>
+  </metadata>
+  <files>
+	  <file src="CloudPlus.API.ActiveDirectory\Web.Config" target="CloudPlus.API.ActiveDirectory" />
+      <file src="CloudPlus.API.ActiveDirectory\packages.config" target="CloudPlus.API.ActiveDirectory" />
+      <file src="CloudPlus.API.ActiveDirectory\bin\**\*.*" target="CloudPlus.API.ActiveDirectory\bin" exclude="CloudPlus.API.ActiveDirectory\bin\*.xml;CloudPlus.API.ActiveDirectory\bin\*.pdb" />
+      <file src="CloudPlus.API.ActiveDirectory\PsScripts\**\*.*" target="CloudPlus.API.ActiveDirectory\PsScripts" />
+  </files>
+</package>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?> 
+<package >
+  <metadata>
+    <id>OFFICE_365_API</id>
+    <version>$version$</version>
+    <authors>Maestral Solutions</authors>
+    <owners>Maestral Solutions</owners>
+    <licenseUrl>http://www.maestralsolutions.com/</licenseUrl>
+    <projectUrl>http://www.maestralsolutions.com/</projectUrl>
+    <iconUrl>http://www.maestralsolutions.com/</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>NuGet Nuspec for Var Dynamics Office 365 API on Cloud Plus v2</description>
+    <copyright>Copyright Maestral Solutions 2017</copyright>
+  </metadata>
+  <files>
+	  <file src="CloudPlus.Api.Office365\Web.Config" target="CloudPlus.Api.Office365" />
+      <file src="CloudPlus.Api.Office365\packages.config" target="CloudPlus.Api.Office365" />
+      <file src="CloudPlus.Api.Office365\bin\**\*.*" target="CloudPlus.Api.Office365\bin" exclude="CloudPlus.Api.Office365\bin\*.xml;CloudPlus.Api.Office365\bin\*.pdb" />
+      <file src="CloudPlus.Api.Office365\PsScripts\**\*.*" target="CloudPlus.Api.Office365\PsScripts" />
+  </files>
+</package>

@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('icomoon.eot?yp0j8a');
+  src:  url('icomoon.eot?yp0j8a#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?yp0j8a') format('truetype'),
+    url('icomoon.woff?yp0j8a') format('woff'),
+    url('icomoon.svg?yp0j8a#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-yammer:before {
+  content: "\e907";
+  color: #0093be;
+}
+.icon-default:before {
+  content: "\e900";
+  color: #ff1f54;
+}
+.icon-exchange:before {
+  content: "\e901";
+  color: #2876bb;
+}
+.icon-office:before {
+  content: "\e902";
+  color: #eb3c00;
+}
+.icon-onedrive:before {
+  content: "\e903";
+  color: #094ab2;
+}
+.icon-sharepoint:before {
+  content: "\e904";
+  color: #0072c6;
+}
+.icon-skype:before {
+  content: "\e905";
+  color: #00aff0;
+}
+.icon-team:before {
+  content: "\e906";
+  color: #535ab2;
+}

@@ -1,0 +1,46 @@
+﻿using Autofac;
+<<<<<<< HEAD
+using CloudPlus.Infrastructure.ServiceBus;
+using CloudPlus.Infrastructure.ServiceBus.RabbitMq;
+=======
+using CloudPlus.Infrastructure.Database.Services.WorkflowActivity;
+using CloudPlus.Infrastructure.Identity.Services;
+using CloudPlus.Infrastructure.ServiceBus;
+using CloudPlus.Infrastructure.ServiceBus.RabbitMq;
+using CloudPlus.Resources;
+using CloudPlus.Workflow.Flows.CreateUser;
+>>>>>>> develop
+using CloudPlus.Workflow.LogObservers;
+
+namespace ClousPlus.Api.AutofacModules
+{
+    public class MessageBrokerModule : Module
+    {
+        protected override void Load(ContainerBuilder builder)
+        {
+            builder.Register(context =>
+                {
+                    var messageBroker = context.Resolve<IRabbitMqMessageBroker>();
+<<<<<<< HEAD
+=======
+                    var identityService = context.Resolve<IIdentityService>();
+                    var configurationManager = context.Resolve<IConfigurationManager>();
+                    var workflowActivityService = context.Resolve<IWorkflowActivityService>();
+>>>>>>> develop
+
+                    return messageBroker.ConfigureBus((busFactoryConfigurator, host) =>
+                    {   
+
+                    }, logger =>
+                    {
+                        logger.AddLog(new CreateUserConsumeMessageObserver(workflowActivityService));
+                        logger.AddLog(new CreateActiveDirectoryUserConsumeMessageObserver());
+                        logger.AddLog(new BusO());
+                    });
+
+                })
+                .SingleInstance()
+                .As<IMessageBroker>();
+        }
+    }
+}

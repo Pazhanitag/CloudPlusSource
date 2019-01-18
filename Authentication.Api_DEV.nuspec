@@ -1,0 +1,24 @@
+<?xml version="1.0"?> 
+<package >
+  <metadata>
+    <id>AUTHENTICATION_DEV</id>
+    <version>$version$</version>
+    <authors>Maestral Solutions</authors>
+    <owners>Maestral Solutions</owners>
+    <licenseUrl>http://www.maestralsolutions.com/</licenseUrl>
+    <projectUrl>http://www.maestralsolutions.com/</projectUrl>
+    <iconUrl>http://www.maestralsolutions.com/</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>NuGet Nuspec for Var Dynamics Authentication on Cloud Plus v2</description>
+    <copyright>Copyright Maestral Solutions 2017</copyright>
+  </metadata>
+  <files>
+	<file src="CloudPlus.Authentication.Api\web.config" target="CloudPlus.Authentication.Api" />
+	<file src="CloudPlus.Authentication.Api\packages.config" target="CloudPlus.Authentication.Api" />
+	<file src="CloudPlus.Authentication.Api\Assets\**\*.*" target="CloudPlus.Authentication.Api\Assets" />
+	<file src="CloudPlus.Authentication.Api\bin\**\*.*" target="CloudPlus.Authentication.Api\bin" exclude="CloudPlus.Authentication.Api\bin\*.xml;CloudPlus.Authentication.Api\bin\*.pdb" />
+	<file src="CloudPlus.Authentication.Api\templates\**\*.*" target="CloudPlus.Authentication.Api\templates" />
+  <file src="CloudPlus.Authentication.Api\Certificate\CloudPlusIdentity.pfx" target="CloudPlus.Authentication.Api\Certificate" />
+	<file src="CloudPlus.Database.Authentication\bin\Release\*.*" target="CloudPlus.Database.Authentication\bin\Release" exclude="CloudPlus.Database.Authentication\bin\Release\*.xml; CloudPlus.Database.Authentication\bin\Release\*.pdb" />
+  </files>
+</package>

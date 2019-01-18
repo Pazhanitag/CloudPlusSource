@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{44B6ADC2-BAD0-4A6B-8056-3D417BFCCA6C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloudPlus.Models</RootNamespace>
+    <AssemblyName>CloudPlus.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExpressiveAnnotations, Version=2.7.4.0, Culture=neutral, PublicKeyToken=d3e372f3c1e83cec, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExpressiveAnnotations.dll.2.7.4\lib\net45\ExpressiveAnnotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Catalog\CatalogProductModel.cs" />
+    <Compile Include="Catalog\CustomerProductItemModel.cs" />
+    <Compile Include="Catalog\CustomerProductModel.cs" />
+    <Compile Include="Catalog\EmailCatalogModel.cs" />
+    <Compile Include="Catalog\ResellerCatalogModel.cs" />
+    <Compile Include="Catalog\ResellerProductItemModel.cs" />
+    <Compile Include="Catalog\ResellerProductModel.cs" />
+    <Compile Include="Category\CategoryModel.cs" />
+    <Compile Include="Company\CompanyCountModel.cs" />
+    <Compile Include="Company\CompanyDetails.cs" />
+    <Compile Include="Company\CompanyDetailsResponseDto.cs" />
+    <Compile Include="Company\CompanyModel.cs" />
+    <Compile Include="Domain\CreateDomainRequestDto.cs" />
+    <Compile Include="Domain\DomainModel.cs" />
+    <Compile Include="Domain\DomainResponseDto.cs" />
+    <Compile Include="Enums\Product\BillingCycle.cs" />
+    <Compile Include="Enums\Product\BillingType.cs" />
+    <Compile Include="Enums\Product\ProductConstraint.cs" />
+    <Compile Include="Enums\CompanyStatus.cs" />
+    <Compile Include="Enums\CompanyType.cs" />
+    <Compile Include="Enums\WorkflowActivityStatus.cs" />
+    <Compile Include="Enums\WorkflowActivityStep.cs" />
+    <Compile Include="Enums\WorkflowActivityType.cs" />
+    <Compile Include="Identity\PermissionModel.cs" />
+    <Compile Include="Metrics\VendorMetricsModel.cs" />
+    <Compile Include="Metrics\VendorMetricsReportConfigsModel.cs" />
+    <Compile Include="Metrics\VendorMetricsUserConfigModel.cs" />
+    <Compile Include="Metrics\VendorMetricsAdminConfigModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_DetailsPageChartModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_DashboardModel.cs" />
+    <Compile Include="Metrics\VendorMetricsConfigurationModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getTeamsUserActivityUserDetailModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getTeamsUserActivityUserCountsModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getSkypeForBusinessActivityUserDetailModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getSkypeForBusinessActivityUserCountsModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getSharePointActivityUserDetailModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getOneDriveUsageAccountDetailModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getSharePointActivityUserCountsModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getOneDriveUsageStorageModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getOffice365ActivationsUserDetailModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getOffice365ActivationCountsModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getOffice365ActiveUserDetailModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getOffice365ActiveUserCountsModel.cs.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getEmailActivityUserDetailModel.cs" />
+    <Compile Include="Metrics\VendorMetrics_Office365_getEmailActivityCountsModel.cs" />
+    <Compile Include="Notification\EmailTemplateGeneratorRequestModel.cs" />
+    <Compile Include="Notification\EmailMessageModel.cs" />
+    <Compile Include="Notification\EmailTemplateGeneratorResultModel.cs" />
+    <Compile Include="Notification\EmailTemplatePlaceholdersGeneratorRequestModel.cs" />
+    <Compile Include="Office365\Api\IOffice365CustomerDomainModel.cs" />
+    <Compile Include="Office365\Api\Office365CompanyModel.cs" />
+    <Compile Include="Office365\Api\Office365CustomerDomainModelWithCredentials.cs" />
+    <Compile Include="Office365\Api\Office365CustomerDomainModel.cs" />
+    <Compile Include="Office365\Api\Office365ImmutableIdModel.cs" />
+    <Compile Include="Office365\Customer\Office365CustomerModel.cs" />
+    <Compile Include="Office365\Domain\Office365DomainModel.cs" />
+    <Compile Include="Office365\Customer\Office365PartnerPlatformCustomerModel.cs" />
+    <Compile Include="Office365\Api\Office365ApiUserModel.cs" />
+    <Compile Include="Office365\License\Office365LicenseModel.cs" />
+    <Compile Include="Office365\Offer\Office365OfferModel.cs" />
+    <Compile Include="Office365\Role\Office365RoleModel.cs" />
+    <Compile Include="Office365\Subscription\Office365SubscriptionModel.cs" />
+    <Compile Include="Office365\Transition\Office365TransitionBasicMatchingDataModel.cs" />
+    <Compile Include="Office365\Transition\Office365TransitionMatchingDataModel.cs" />
+    <Compile Include="Office365\Transition\Office365TransitionProductItemModel.cs" />
+    <Compile Include="Office365\Transition\Office365TransitionRecommendedProductItemModel.cs" />
+    <Compile Include="Office365\Transition\Office365TransitionReportModel.cs" />
+    <Compile Include="Office365\Transition\Office365TransitionSubscriptionReportModel.cs" />
+    <Compile Include="Office365\User\Office365UserRolesModel.cs" />
+    <Compile Include="Office365\User\Office365SdkUser.cs" />
+    <Compile Include="Office365\User\Office365UserModel.cs" />
+    <Compile Include="Office365\Utilities\Office365CompatibleMatrixModel.cs" />
+    <Compile Include="Price\EditGeneralInformationModel.cs" />
+    <Compile Include="Price\PriceCatalogModel.cs" />
+    <Compile Include="Office365\Address\AddressValidationModel.cs" />
+    <Compile Include="Office365\Order\Office365OrderModel.cs" />
+    <Compile Include="Identity\RoleModel.cs" />
+    <Compile Include="Price\PriceCatalogTemplateModel.cs" />
+    <Compile Include="Price\PriceWorkflowModel.cs" />
+    <Compile Include="Price\PriceWorkflowResultModel.cs" />
+    <Compile Include="ProductConstraint\ProductConstraintContent.cs" />
+    <Compile Include="ProductConstraint\ProductConstraintRequestDto.cs" />
+    <Compile Include="ProductConstraint\ProductConstraintResponseDto.cs" />
+    <Compile Include="Product\ProductInsertModel.cs" />
+    <Compile Include="Product\ProductModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Identity\UserModel.cs" />
+    <Compile Include="Provisions\ProvisionedServiceModel.cs" />
+    <Compile Include="Support\CustomSecureControlPanelModel.cs" />
+    <Compile Include="Support\SupportModel.cs" />
+    <Compile Include="WorkflowActivity\WorkflowActivityContentDto.cs" />
+    <Compile Include="WorkflowActivity\WorkflowActivityDto.cs" />
+    <Compile Include="WorkflowActivity\WorkflowActivityExceptionDto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudPlus.Enums\CloudPlus.Enums.csproj">
+      <Project>{194F3BA1-550A-4011-B630-F4DF7103B3AB}</Project>
+      <Name>CloudPlus.Enums</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

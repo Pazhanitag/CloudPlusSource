@@ -1,0 +1,75 @@
+﻿using System.Reflection;
+using System.Web;
+using System.Web.Http;
+using Autofac;
+using Autofac.Integration.WebApi;
+using CloudPlus.Infrastructure.Email;
+using CloudPlus.Infrastructure.Http;
+using CloudPlus.Infrastructure.Identity.Services;
+using CloudPlus.Infrastructure.ServiceBus.RabbitMq;
+using CloudPlus.Resources;
+using CloudPlus.Settings;
+using ClousPlus.Api.AutofacModules;
+using ClousPlus.Api.Settings;
+using Microsoft.Owin;
+using Owin;
+using CloudPlus.Database;
+using CloudPlus.Infrastructure.Database.Services.WorkflowActivity;
+
+namespace ClousPlus.Api.Extensions
+{
+    public static class IoC
+    {
+        private static IContainer _container;
+
+        public static void UseIoC(this IAppBuilder app, HttpConfiguration config)
+        {
+            var autoFacConfig = SetupAutofacContainer();
+
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(autoFacConfig);
+
+            app.UseAutofacMiddleware(autoFacConfig);
+            app.UseAutofacWebApi(config);
+        }
+
+        internal static IContainer SetupAutofacContainer()
+        {
+            var builder = new ContainerBuilder();
+
+            RegisterDependencies(builder);
+
+            _container = builder.Build();
+
+            return _container;
+        }
+
+        public static IContainer GetContainer()
+        {
+            return _container;
+        }
+
+        private static void RegisterDependencies(ContainerBuilder builder)
+        {
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+
+            builder.Register(x => HttpContext.Current.GetOwinContext()).As<IOwinContext>();
+            builder.RegisterType<ConfigurationManager>().As<IConfigurationManager>();
+            builder.RegisterType<HttpClientResolver>().As<IHttpClientResolver>();
+            builder.RegisterType<HttpClientProxy>().As<IHttpClientProxy>();
+            builder.RegisterType<SmtpClientResolver>().As<ISmtpClientResolver>();
+            builder.RegisterType<SmtpManager>().As<ISmtpManager>();
+            builder.RegisterType<JsonSerializer>().As<IObjectSerializer>();
+
+            builder.RegisterType<IdentityService>().As<IIdentityService>();
+<<<<<<< HEAD
+            builder.RegisterType<CloudPlusApiSettings>().As(typeof(IRabbitMqSettings), typeof(ICloudPlusApiSettings));
+=======
+            builder.RegisterType<WorkflowActivityService>().As<IWorkflowActivityService>();
+            builder.RegisterType<CldpDbContext>().InstancePerLifetimeScope();
+>>>>>>> develop
+
+            builder.RegisterType<RabbitMqMessageBroker>().As<IRabbitMqMessageBroker>();
+            builder.RegisterModule<MessageBrokerModule>();
+        }
+    }
+}

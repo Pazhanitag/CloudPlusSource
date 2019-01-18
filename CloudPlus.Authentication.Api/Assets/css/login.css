@@ -1,0 +1,90 @@
+body {
+    background-color: #F2F8F8;
+}
+
+a {
+    color: #2F88C1;
+}
+
+.hero.is-fullheight {
+    background-color: #F2F8F8;
+}
+
+.card-container {
+    min-width: 480px;
+}
+
+@media only screen and (max-width: 515px) {
+    .card-container {
+        min-width: 100px;
+    }
+}
+
+.card {
+    border-top: 2px solid #2F88C1;
+    border-radius: 2px;
+    box-shadow: 5px 5px 5px 0 #D2D8D8, -5px 0 5px -5px #D2D8D8;
+}
+
+.card-content {
+    overflow: auto;
+    padding: 70px 50px 35px 50px;
+}
+
+.card-title {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.login-title {
+    font-size: 24px;
+    color: #56575B;
+}
+
+.login-subtitle {
+    font-size: 14px;
+    padding: 30px 20px 0 20px;
+    color: #CCCCCC;
+}
+
+.login-footer {
+    font-size: 14px;
+    color: #CCCCCC;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.label {
+    font-weight: normal;
+    font-size: 14px;
+    color: #747577;
+    text-align: left;
+    padding-left: 0;
+}
+
+.input {
+    background-color: #F9FAFC;
+}
+
+.input:focus {
+    box-shadow: 0 0 0 0.125em rgba(47, 136, 193, 0.12);
+    border-color: #2f88c1;
+}
+
+.button.is-info {
+    background-color: #2F88C1;
+    padding: 5px 25px 5px 25px;
+}
+
+.sign-in-button {
+    margin-top: 30px;
+}
+
+.sign-in-button:hover, .sign-in-button:active {
+    background: #2574a7 !important;
+}
+
+.help.is-danger {
+    font-size: 14px;
+    padding-bottom: 15px;
+}

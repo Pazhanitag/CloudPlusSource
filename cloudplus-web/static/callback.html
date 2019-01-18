@@ -1,0 +1,17 @@
+<html>
+  <head></head>
+<body>
+  
+   <script src="oidc-client.min.js"></script>
+  <script>
+    var mgr = new Oidc.UserManager({userStore: new Oidc.WebStorageStateStore()});
+
+    mgr.signinRedirectCallback().then(function (user) {
+      window.location.href = '/';
+    }).catch(function (err) {
+      console.log(err);
+    });
+  </script>
+</body>
+
+</html>

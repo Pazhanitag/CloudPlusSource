@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{636DDF45-1E81-41C8-9B74-9EF4D1426CC9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloudPlus.Api</RootNamespace>
+    <AssemblyName>CloudPlus.Api</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Owin.4.1.0\lib\net45\Autofac.Integration.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.1.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.Owin.4.0.0\lib\net45\Autofac.Integration.WebApi.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Automatonymous, Version=3.5.12.75, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Automatonymous.3.5.12\lib\net452\Automatonymous.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.0.3.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.0.3\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="ExpressiveAnnotations, Version=2.7.4.0, Culture=neutral, PublicKeyToken=d3e372f3c1e83cec, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExpressiveAnnotations.dll.2.7.4\lib\net45\ExpressiveAnnotations.dll</HintPath>
+    </Reference>
+    <Reference Include="FastMember.Signed, Version=1.3.0.0, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
+      <HintPath>..\packages\FastMember.Signed.1.3.0\lib\net45\FastMember.Signed.dll</HintPath>
+    </Reference>
+    <Reference Include="GreenPipes, Version=1.2.0.96, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
+      <HintPath>..\packages\GreenPipes.1.2.0\lib\net452\GreenPipes.dll</HintPath>
+    </Reference>
+    <Reference Include="IdentityModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\IdentityModel.1.13.1\lib\net45\IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="IdentityServer3.AccessTokenValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\IdentityServer3.AccessTokenValidation.2.15.0\lib\net45\IdentityServer3.AccessTokenValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net-loggly, Version=7.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net-loggly.7.3.0\lib\net40\log4net-loggly.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\MassTransit.3.5.7\lib\net452\MassTransit.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit.AutomatonymousIntegration, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\MassTransit.Automatonymous.3.5.7\lib\net452\MassTransit.AutomatonymousIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit.RabbitMqTransport, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\MassTransit.RabbitMQ.3.5.7\lib\net452\MassTransit.RabbitMqTransport.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net46\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.4\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocol.Extensions, Version=1.0.40306.1554, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.4.403061554\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.4\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.3.1.0\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.FileSystems, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.FileSystems.3.1.0\lib\net45\Microsoft.Owin.FileSystems.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Jwt, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Jwt.3.1.0\lib\net45\Microsoft.Owin.Security.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.StaticFiles, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.StaticFiles.3.1.0\lib\net45\Microsoft.Owin.StaticFiles.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Primitives.4.0.1\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="NewId, Version=3.0.1.17, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\NewId.3.0.1\lib\net452\NewId.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.5.0.1\lib\net451\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.0.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.40306.1554, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.4.403061554\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.2\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\AuthorizeAccess.cs" />
+    <Compile Include="Attributes\ExceptionHandlingAttribute.cs" />
+    <Compile Include="Attributes\InterceptionAttribute.cs" />
+    <Compile Include="Attributes\ValidateModelAttribute.cs" />
+    <Compile Include="AutofacModules\MessageBrokerModule.cs" />
+    <Compile Include="Controllers\ActivityCenter\CreateUserWorkflowActivityController.cs" />
+    <Compile Include="Controllers\Catalog\CatalogController.cs" />
+    <Compile Include="Controllers\Metrics\MetricsController.cs" />
+    <Compile Include="Controllers\Support\CustomSecureControlPanelController.cs" />
+    <Compile Include="Controllers\Utilities\CatalogUtilitiesController.cs" />
+    <Compile Include="Controllers\Company\CompaniesController.cs" />
+    <Compile Include="Controllers\Company\MyCompanyController.cs" />
+    <Compile Include="Controllers\Impersonate\ImpersonateController.cs" />
+    <Compile Include="Controllers\Office365\Office365CustomerController.cs" />
+    <Compile Include="Controllers\Office365\Office365DomainController.cs" />
+    <Compile Include="Controllers\Office365\Office365RoleController.cs" />
+    <Compile Include="Controllers\Office365\Office365TransitionController.cs" />
+    <Compile Include="Controllers\Office365\Office365UserController.cs" />
+    <Compile Include="Controllers\Provisioning\ProvisioningController.cs" />
+    <Compile Include="Helpers\CatalogHelper.cs" />
+    <Compile Include="Helpers\ICatalogHelper.cs" />
+    <Compile Include="Mappers\CatalogMapper.cs" />
+    <Compile Include="Mappers\Office365AddAdditionalDomainMapper.cs" />
+    <Compile Include="Mappers\Office365CompanyMapper.cs" />
+    <Compile Include="Mappers\Office365DomainMapper.cs" />
+    <Compile Include="Mappers\Office365LicenseMapper.cs" />
+    <Compile Include="Mappers\Office365Mapper.cs" />
+    <Compile Include="Mappers\Office365OfferMapper.cs" />
+    <Compile Include="Mappers\Office365RoleMapper.cs" />
+    <Compile Include="Mappers\ProvisioningMapper.cs" />
+    <Compile Include="Mappers\Office365UserMapper.cs" />
+    <Compile Include="Mappers\Office365AddressMapper.cs" />
+    <Compile Include="Mappers\Office365CustomerMapper.cs" />
+    <Compile Include="Controllers\Office365\Office365UtilitiesController.cs" />
+    <Compile Include="Controllers\Product\ProductController.cs" />
+    <Compile Include="Controllers\UsersAndRoles\ProfileController.cs" />
+    <Compile Include="Controllers\UsersAndRoles\RolesController.cs" />
+    <Compile Include="Controllers\UsersAndRoles\UsersController.cs" />
+    <Compile Include="Controllers\Utilities\RecaptchaUtilitiesController.cs" />
+    <Compile Include="Controllers\Utilities\DomainUtilitiesController.cs" />
+    <Compile Include="Controllers\Utilities\CompanyUtilitiesController.cs" />
+    <Compile Include="Controllers\Utilities\RolesUtilitiesController.cs" />
+    <Compile Include="Controllers\Utilities\UserUtilitiesController.cs" />
+    <Compile Include="Extensions\IoC.cs" />
+    <Compile Include="Extensions\PrincipalClaims.cs" />
+    <Compile Include="Extensions\ServiceBus.cs" />
+    <Compile Include="Extensions\SwaggerConfig.cs" />
+    <Compile Include="Extensions\WebApi.cs" />
+    <Compile Include="Helpers\IImageHelper.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Mappers\CompanyMapper.cs" />
+    <Compile Include="Mappers\DomainMapper.cs" />
+    <Compile Include="Mappers\PermissionMapper.cs" />
+    <Compile Include="Mappers\ProductMapper.cs" />
+    <Compile Include="Mappers\RoleMapper.cs" />
+    <Compile Include="Mappers\UserMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\AuthorizationManager.cs" />
+    <Compile Include="Security\IAuthorizationManager.cs" />
+    <Compile Include="Settings\CloudPlusApiSettings.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Request\Catalog\ChangeDefaultCatalogViewModel.cs" />
+    <Compile Include="ViewModels\Request\Catalog\CreateCatalogViewModel.cs" />
+    <Compile Include="ViewModels\Request\Catalog\UpdateCatalogViewModel.cs" />
+    <Compile Include="ViewModels\Request\Catalog\UpdateProductItemViewModel.cs" />
+    <Compile Include="ViewModels\Request\Company\CreateCompanyViewModel.cs" />
+    <Compile Include="ViewModels\Request\Company\CreateDomainViewModel.cs" />
+    <Compile Include="ViewModels\Request\Company\UpdateCompanyViewModel.cs" />
+    <Compile Include="ViewModels\Request\Office365\Office365AddAdditionalDomainViewModel.cs" />
+    <Compile Include="ViewModels\Request\Office365\Office365CreateCustomerViewModel.cs" />
+    <Compile Include="ViewModels\Request\Office365\Office365CustomerAddressViewModel.cs" />
+    <Compile Include="ViewModels\Request\Office365\Office365UserAssignLicenseViewModel.cs" />
+    <Compile Include="ViewModels\Request\Office365\Office365UserChangeLicenseViewModel.cs" />
+    <Compile Include="ViewModels\Request\Office365\Office365UserMultiEditViewModel.cs" />
+    <Compile Include="ViewModels\Request\Office365\Office365UserRemoveLicenseViewModel.cs" />
+    <Compile Include="ViewModels\Request\Office365\Office365UserRestoreViewModel.cs" />
+    <Compile Include="ViewModels\Request\Office365\ResendTxtRecordsViewModel.cs" />
+    <Compile Include="ViewModels\Request\PriceCatalogTemplate\CreatePriceCatalogTemplateViewModel.cs" />
+    <Compile Include="ViewModels\Request\PriceCatalogTemplate\UpdatePriceCatalogTemplateViewModel.cs" />
+    <Compile Include="ViewModels\Request\PriceCatalog\CalculatePriceViewModel.cs" />
+    <Compile Include="ViewModels\Request\PriceCatalog\ClonePriceCatalogViewModel.cs" />
+    <Compile Include="ViewModels\Request\PriceCatalog\CreatePriceCatalogViewModel.cs" />
+    <Compile Include="ViewModels\Request\PriceCatalog\EditPriceCatalogViewModel.cs" />
+    <Compile Include="ViewModels\Request\Recaptcha\HasRecaptchaPassedViewModel.cs" />
+    <Compile Include="ViewModels\Request\Transition\Office365TransitionViewModel.cs" />
+    <Compile Include="ViewModels\Request\User\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModels\Request\User\CreateUserViewModel.cs" />
+    <Compile Include="ViewModels\Request\User\UpdatePasswordViewModel.cs" />
+    <Compile Include="ViewModels\Request\User\UpdateUserProfileViewModel.cs" />
+    <Compile Include="ViewModels\Request\User\UpdateUserViewModel.cs" />
+    <Compile Include="ViewModels\Response\Catalog\CatalogCompanyViewModel.cs" />
+    <Compile Include="ViewModels\Response\Catalog\CatalogViewModel.cs" />
+    <Compile Include="ViewModels\Response\Catalog\CustomerProductItemViewModel.cs" />
+    <Compile Include="ViewModels\Response\Catalog\CustomerProductViewModel.cs" />
+    <Compile Include="ViewModels\Response\Catalog\ProductItemViewModel.cs" />
+    <Compile Include="ViewModels\Response\Catalog\ProductViewModel.cs" />
+    <Compile Include="ViewModels\Response\Company\Branding\BrandingViewModel.cs" />
+    <Compile Include="ViewModels\Response\Company\CompanyCountViewModel.cs" />
+    <Compile Include="ViewModels\Response\Company\CompanyViewModel.cs" />
+    <Compile Include="ViewModels\Response\Company\DomainViewModel.cs" />
+    <Compile Include="ViewModels\Response\Office365\Office365CompanyDomainsViewModel.cs" />
+    <Compile Include="ViewModels\Response\Office365\Office365DomainUserViewModel.cs" />
+    <Compile Include="ViewModels\Response\Office365\Office365DomainViewModel.cs" />
+    <Compile Include="ViewModels\Response\Office365\Office365LicenseViewModel.cs" />
+    <Compile Include="ViewModels\Response\Office365\Office365OfferViewModel.cs" />
+    <Compile Include="ViewModels\Response\Office365\Office365RoleViewModel.cs" />
+    <Compile Include="ViewModels\Response\Paging\PagedResultContent.cs" />
+    <Compile Include="ViewModels\Response\PriceCatalog\PriceTemplateViewModel.cs" />
+    <Compile Include="ViewModels\Response\Products\ProductCategoryViewModel.cs" />
+    <Compile Include="ViewModels\Response\Products\ProductItemViewModel.cs" />
+    <Compile Include="ViewModels\Response\Paging\PagedResultViewModel.cs" />
+    <Compile Include="ViewModels\Response\Permissions\PermissionViewModel.cs" />
+    <Compile Include="ViewModels\Response\Products\ProductViewModel.cs" />
+    <Compile Include="ViewModels\Response\Recaptcha\RecaptchaViewModel.cs" />
+    <Compile Include="ViewModels\Response\Roles\RoleViewModel.cs" />
+    <Compile Include="ViewModels\Response\User\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModels\Response\User\UserEmailsViewModel.cs" />
+    <Compile Include="ViewModels\Response\User\UserProfileViewModel.cs" />
+    <Compile Include="ViewModels\Response\User\UserServiceViewModel.cs" />
+    <Compile Include="ViewModels\Response\User\UserViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Static\Images\CompanyLogo\" />
+    <Folder Include="Static\Images\Placeholders\" />
+    <Folder Include="Static\Images\ProfilePicture\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudPlus.Constants\CloudPlus.Constants.csproj">
+      <Project>{8FCBB4C6-81D6-4076-99A4-81EF751B71BB}</Project>
+      <Name>CloudPlus.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Database.Authentication\CloudPlus.Database.Authentication.csproj">
+      <Project>{0CD32452-C545-49B4-9C57-A0945F7AD923}</Project>
+      <Name>CloudPlus.Database.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Database.Common\CloudPlus.Database.Common.csproj">
+      <Project>{f21cf2b6-0f84-4cf5-80fd-29d7621c34b0}</Project>
+      <Name>CloudPlus.Database.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Database\CloudPlus.Database.csproj">
+      <Project>{85d2531d-2035-4d08-9f82-fc9423997f7a}</Project>
+      <Name>CloudPlus.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Entities\CloudPlus.Entities.csproj">
+      <Project>{8627b833-2ec6-40f4-bb67-268057d3c843}</Project>
+      <Name>CloudPlus.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Enums\CloudPlus.Enums.csproj">
+      <Project>{194F3BA1-550A-4011-B630-F4DF7103B3AB}</Project>
+      <Name>CloudPlus.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Extensions\CloudPlus.Extensions.csproj">
+      <Project>{08cb184a-0484-4da3-b567-790645a46ab9}</Project>
+      <Name>CloudPlus.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Infrastructure.Cache\CloudPlus.Infrastructure.Cache.csproj">
+      <Project>{d156c218-a9db-4ea0-8c8e-23b73cbec862}</Project>
+      <Name>CloudPlus.Infrastructure.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Infrastructure.Email\CloudPlus.Infrastructure.Email.csproj">
+      <Project>{b53e2eb5-e677-4edd-9a76-47b991026257}</Project>
+      <Name>CloudPlus.Infrastructure.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Infrastructure.Http\CloudPlus.Infrastructure.Http.csproj">
+      <Project>{d93ea3a5-9c4e-4bf6-94a1-62f134273596}</Project>
+      <Name>CloudPlus.Infrastructure.Http</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Infrastructure.ServiceBus\CloudPlus.Infrastructure.ServiceBus.csproj">
+      <Project>{c37348ec-9efe-4250-905f-090bc153f623}</Project>
+      <Name>CloudPlus.Infrastructure.ServiceBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Logging\CloudPlus.Logging.csproj">
+      <Project>{6efccc98-f658-4557-a7b2-78074b200fe3}</Project>
+      <Name>CloudPlus.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Models\CloudPlus.Models.csproj">
+      <Project>{44b6adc2-bad0-4a6b-8056-3d417bfcca6c}</Project>
+      <Name>CloudPlus.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.QueueModels\CloudPlus.QueueModels.csproj">
+      <Project>{2bf5c571-867e-412f-9e9d-44111638beb0}</Project>
+      <Name>CloudPlus.QueueModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Resources\CloudPlus.Resources.csproj">
+      <Project>{b9d3c519-e8ce-4a49-93a7-12f11be28f58}</Project>
+      <Name>CloudPlus.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Services.ActiveDirectory\CloudPlus.Services.ActiveDirectory.csproj">
+      <Project>{2bb62af1-53e4-4cd8-b34e-a56bbd8b03b2}</Project>
+      <Name>CloudPlus.Services.ActiveDirectory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Services.Database\CloudPlus.Services.Database.csproj">
+      <Project>{b4aefe88-a2db-4dfc-bc85-c5a40b5a59b0}</Project>
+      <Name>CloudPlus.Services.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Services.Identity\CloudPlus.Services.Identity.csproj">
+      <Project>{f9566e90-c4cd-4065-ae18-17cf862dd02c}</Project>
+      <Name>CloudPlus.Services.Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Services.Office365\CloudPlus.Services.Office365.csproj">
+      <Project>{49AD1234-0CC9-4870-BE8C-CD14E3CE9DDA}</Project>
+      <Name>CloudPlus.Services.Office365</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Settings\CloudPlus.Settings.csproj">
+      <Project>{C3F58C75-C371-44FF-A56E-85FCA4D2B6F5}</Project>
+      <Name>CloudPlus.Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63145</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63145/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

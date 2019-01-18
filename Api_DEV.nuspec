@@ -1,0 +1,22 @@
+<?xml version="1.0"?> 
+<package >
+  <metadata>
+    <id>PortalService_DEV</id>
+    <version>$version$</version>
+    <authors>Maestral Solutions</authors>
+    <owners>Maestral Solutions</owners>
+    <licenseUrl>http://www.maestralsolutions.com/</licenseUrl>
+    <projectUrl>http://www.maestralsolutions.com/</projectUrl>
+    <iconUrl>http://www.maestralsolutions.com/</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>NuGet Nuspec for Var Dynamics Portal Service on Cloud Plus v2</description>
+    <copyright>Copyright Maestral Solutions 2017</copyright>
+  </metadata>
+  <files>
+	  <file src="CloudPlus.Api\web.config" target="CloudPlus.Api" />
+	  <file src="CloudPlus.Api\packages.config" target="CloudPlus.Api" />
+	  <file src="CloudPlus.Api\bin\**\*.*" target="CloudPlus.Api\bin" exclude="ClousPlus.Api\bin\*.xml;ClousPlus.Api\bin\*.pdb" />
+    <file src="CloudPlus.Api\static\**\*.*" target="CloudPlus.Api\static" />
+	  <file src="CloudPlus.Database\bin\Release\*.*" target="CloudPlus.Database\bin\Release" exclude="CloudPlus.Database\bin\Release\*.xml; CloudPlus.Database\bin\Release\*.pdb" />
+  </files>
+</package>

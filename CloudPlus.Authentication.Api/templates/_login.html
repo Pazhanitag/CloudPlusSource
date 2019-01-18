@@ -1,0 +1,48 @@
+﻿<section class="hero is-fullheight">
+    <div class="hero-body">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-4 is-narrow card-container">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">
+                                <h1 class="login-title">Welcome to Your Control Panel</h1>
+                                <div class="login-subtitle">Please log in with your Username and Password that was provided by your administrator</div>
+                            </div>
+                            <div ng-show="model.errorMessage">
+                                <div class="help is-danger">
+                                    {{model.errorMessage}}
+                                </div>
+                            </div>
+                            <form name="form" method="post" action="{{model.loginUrl}}">
+                                <anti-forgery-token token="model.antiForgery"></anti-forgery-token>
+                                <div class="field">
+                                    <label class="label">Username</label>
+                                    <div class="control">
+                                        <input required name="username" autofocus id="username" class="input" type="text" ng-model="model.username" maxlength="100">
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <label class="label">Password</label>
+                                    <div class="control">
+                                        <input required id="password" name="password" class="input" type="password" ng-model="model.password" maxlength="100" autocomplete="off" focus-if="model.username">
+                                    </div>
+                                </div>
+                                <div class="label">
+                                    <a ng-href="{{model.additionalLinks[0].href}}&email={{model.username}}">Forgot Password?</a>
+                                </div>
+                                <div class="control is-pulled-right">
+                                    <button class="button is-info sign-in-button">Sign in</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="login-footer">
+                        Problems with your account? Contact your administrator!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

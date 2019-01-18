@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{52EBE485-0DA4-446A-8B23-63CC9DE32383}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CloudPlus.AppServices.Office365</RootNamespace>
+    <AssemblyName>CloudPlus.AppServices.Office365</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Extras.DynamicProxy, Version=4.2.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Extras.DynamicProxy.4.2.1\lib\net45\Autofac.Extras.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GreenPipes, Version=1.2.0.96, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
+      <HintPath>..\packages\GreenPipes.1.2.0\lib\net452\GreenPipes.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net-loggly, Version=7.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net-loggly.7.3.0\lib\net40\log4net-loggly.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\MassTransit.3.5.7\lib\net452\MassTransit.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit.AutofacIntegration, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\MassTransit.Autofac.3.5.7\lib\net452\MassTransit.AutofacIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit.RabbitMqTransport, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\MassTransit.RabbitMQ.3.5.7\lib\net452\MassTransit.RabbitMqTransport.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net46\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+    </Reference>
+    <Reference Include="NewId, Version=3.0.1.17, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\NewId.3.0.1\lib\net452\NewId.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\RabbitMQ.Client.5.0.1\lib\net451\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Topshelf, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Topshelf.4.0.3\lib\net452\Topshelf.dll</HintPath>
+    </Reference>
+    <Reference Include="Topshelf.Autofac, Version=2.0.0.0, Culture=neutral, PublicKeyToken=ebfabbe7fb167e88, processorArchitecture=MSIL">
+      <HintPath>..\packages\Topshelf.Autofac.3.1.1\lib\net452\Topshelf.Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Topshelf.Log4Net, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Topshelf.Log4Net.4.0.3\lib\net452\Topshelf.Log4Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutofacModules\MessageBrokerModule.cs" />
+    <Compile Include="Consumers\AddressValidation\IOffice365AddressValidationConsumer.cs" />
+    <Compile Include="Consumers\Domain\IOffice365AddAdditionalDomainConsumer.cs" />
+    <Compile Include="Consumers\Domain\IOffice365ResendTxtRecordsConsumer.cs" />
+    <Compile Include="Consumers\Domain\IOffice365VerifyCustomerDomainConsumer.cs" />
+    <Compile Include="Consumers\Customer\IOffice365CreateCustomerConsumer.cs" />
+    <Compile Include="Consumers\AddressValidation\Office365AddressValidationConsumer.cs" />
+    <Compile Include="Consumers\Domain\Office365AddAdditionalDomainConsumer.cs" />
+    <Compile Include="Consumers\Domain\Office365FederateDomainConsumer.cs" />
+    <Compile Include="Consumers\Domain\Office365ResendTxtRecordsConsumer.cs" />
+    <Compile Include="Consumers\Domain\Office365VerifyCustomerDomainConsumer.cs" />
+    <Compile Include="Consumers\Customer\Office365CreateCustomerConsumer.cs" />
+    <Compile Include="Consumers\Subscription\IManageSubscriptionsAndLicencesConsumer.cs" />
+    <Compile Include="Consumers\Subscription\ManageSubscriptionsAndLicencesConsumer.cs" />
+    <Compile Include="Consumers\Transition\IOffice365TransitionConsumer.cs" />
+    <Compile Include="Consumers\Transition\IOffice365TransitionDeletePartnerPlatformUserConsumer.cs" />
+    <Compile Include="Consumers\Transition\IOffice365TransitionReportConsumer.cs" />
+    <Compile Include="Consumers\Transition\IOffice365TransitionUserAndLicensesConsumer.cs" />
+    <Compile Include="Consumers\Transition\Office365TransitionConsumer.cs" />
+    <Compile Include="Consumers\Transition\Office365TransitionDeletePartnerPlatformUserConsumer.cs" />
+    <Compile Include="Consumers\Transition\Office365TransitionReportConsumer.cs" />
+    <Compile Include="Consumers\Transition\Office365TransitionUserAndLicensesConsumer.cs" />
+    <Compile Include="Consumers\User\IOffice365GetUserRolesConsumer.cs" />
+    <Compile Include="Consumers\User\IOffice365HardDeleteUserConsumer.cs" />
+    <Compile Include="Consumers\User\IOffice365UserAssignLicenseConsumer.cs" />
+    <Compile Include="Consumers\User\IOffice365UserChangeLicenseConsumer.cs" />
+    <Compile Include="Consumers\User\IOffice365UserChangeRolesConsumer.cs" />
+    <Compile Include="Consumers\User\IOffice365CreateUserConsumer.cs" />
+    <Compile Include="Consumers\User\IOffice365UserMultiEditConsumer.cs" />
+    <Compile Include="Consumers\User\IOffice365UserRemoveLicenseConsumer.cs" />
+    <Compile Include="Consumers\User\IOffice365UserRestoreConsumer.cs" />
+    <Compile Include="Consumers\User\Office365GetUserRolesConsumer.cs" />
+    <Compile Include="Consumers\User\Office365HardDeleteUserConsumer.cs" />
+    <Compile Include="Consumers\User\Office365UserAssignLicenseConsumer.cs" />
+    <Compile Include="Consumers\User\Office365UserChangeLicenseConsumer.cs" />
+    <Compile Include="Consumers\User\Office365UserChangeRolesConsumer.cs" />
+    <Compile Include="Consumers\User\Office365CreateUserConsumer.cs" />
+    <Compile Include="Consumers\User\Office365UserMultiEditConsumer.cs" />
+    <Compile Include="Consumers\User\Office365UserRemoveLicenseConsumer.cs" />
+    <Compile Include="Consumers\User\Office365UserRestoreConsumer.cs" />
+    <Compile Include="Consumers\User\UserManageSubscriptionAdnChangeLicenseConsumer.cs" />
+    <Compile Include="Consumers\User\UserManageSubscriptionAndAssignLicenseConsumer.cs" />
+    <Compile Include="Observers\IOffice365ManageSubscriptionsAndLicencesObserver.cs" />
+    <Compile Include="Observers\IOffice365TransitionDeletePartnerPlatformUserObserver.cs" />
+    <Compile Include="Observers\Office365ManageSubscriptionsAndLicencesObserver.cs" />
+    <Compile Include="Observers\Office365TransitionDeletePartnerPlatformUserObserver.cs" />
+    <Compile Include="Office365ProvisioningService.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\IoC.cs" />
+    <Compile Include="Settings\Office365ServiceSettings.cs" />
+    <Compile Include="Workflow\AddAdditionalDomain\IOffice365AddAdditionalDomainWorkflow.cs" />
+    <Compile Include="Workflow\AddAdditionalDomain\Office365AddAdditionalDomainWorkflow.cs" />
+    <Compile Include="Workflow\FederateDomain\FederateDomainWorkflow.cs" />
+    <Compile Include="Workflow\FederateDomain\IFederateDomainWorkflow.cs" />
+    <Compile Include="Workflow\HardDeleteUser\HardDeleteUserWorkflow.cs" />
+    <Compile Include="Workflow\HardDeleteUser\IHardDeleteUserWorkflow.cs" />
+    <Compile Include="Workflow\ManageSubscription\IManageSubscriptionWorkflow.cs" />
+    <Compile Include="Workflow\ManageSubscription\ManageSubscriptionWorkflow.cs" />
+    <Compile Include="Workflow\MultiUserEditWorkflow.cs" />
+    <Compile Include="Workflow\ResendTxtRecords\IOffice365ResendTxtRecordsWorkflow.cs" />
+    <Compile Include="Workflow\CreateCustomer\Office365CreateCustomerWorkflow.cs" />
+    <Compile Include="Workflow\CreateCustomer\IOffice365CreateCustomerWorkflow.cs" />
+    <Compile Include="Workflow\ResendTxtRecords\Office365ResendTxtRecordsWorkflow.cs" />
+    <Compile Include="Workflow\Builder\Office365WorkflowBuilder.cs" />
+    <Compile Include="Workflow\Transition\IOffice365TransitionUserAndLicensesWorkflow.cs" />
+    <Compile Include="Workflow\Transition\IOffice365TransitionWorkflow.cs" />
+    <Compile Include="Workflow\Transition\Office365TransitionUserAndLicensesWorkflow.cs" />
+    <Compile Include="Workflow\Transition\Office365TransitionWorkflow.cs" />
+    <Compile Include="Workflow\UserAssignLicense\IOffice365UserAssignLicenseWorkflow.cs" />
+    <Compile Include="Workflow\UserAssignLicense\Office365UserAssignLicenseWorkflow.cs" />
+    <Compile Include="Workflow\UserChangeRoles\IOffice365UserChangeRolesWorkflow.cs" />
+    <Compile Include="Workflow\UserChangeRoles\Office365UserChangeRolesWorkflow.cs" />
+    <Compile Include="Workflow\UserRemoveLicense\IOffice365UserRemoveLicenseWorkflow.cs" />
+    <Compile Include="Workflow\UserRemoveLicense\Office365UserRemoveLicenseWorkflow.cs" />
+    <Compile Include="Workflow\UserRestore\IOffice365UserRestoreWorkflow.cs" />
+    <Compile Include="Workflow\UserRestore\Office365UserRestoreWorkflow.cs" />
+    <Compile Include="Workflow\VerifyDomain\IOffice365VerifyDomainWorkflow.cs" />
+    <Compile Include="Workflow\VerifyDomain\Office365VerifyDomainWorkflow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudPlus.Constants\CloudPlus.Constants.csproj">
+      <Project>{8FCBB4C6-81D6-4076-99A4-81EF751B71BB}</Project>
+      <Name>CloudPlus.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Database.Authentication\CloudPlus.Database.Authentication.csproj">
+      <Project>{0CD32452-C545-49B4-9C57-A0945F7AD923}</Project>
+      <Name>CloudPlus.Database.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Database\CloudPlus.Database.csproj">
+      <Project>{85D2531D-2035-4D08-9F82-FC9423997F7A}</Project>
+      <Name>CloudPlus.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.DynamicProxy.Interceptors\CloudPlus.DynamicProxy.Interceptors.csproj">
+      <Project>{4D877AD0-CD09-4D3F-9F20-3D3F7E1A928F}</Project>
+      <Name>CloudPlus.DynamicProxy.Interceptors</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Enums\CloudPlus.Enums.csproj">
+      <Project>{194F3BA1-550A-4011-B630-F4DF7103B3AB}</Project>
+      <Name>CloudPlus.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Infrastructure.Http\CloudPlus.Infrastructure.Http.csproj">
+      <Project>{D93EA3A5-9C4E-4BF6-94A1-62F134273596}</Project>
+      <Name>CloudPlus.Infrastructure.Http</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Infrastructure.ServiceBus\CloudPlus.Infrastructure.ServiceBus.csproj">
+      <Project>{C37348EC-9EFE-4250-905F-090BC153F623}</Project>
+      <Name>CloudPlus.Infrastructure.ServiceBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Logging\CloudPlus.Logging.csproj">
+      <Project>{6EFCCC98-F658-4557-A7B2-78074B200FE3}</Project>
+      <Name>CloudPlus.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Models\CloudPlus.Models.csproj">
+      <Project>{44B6ADC2-BAD0-4A6B-8056-3D417BFCCA6C}</Project>
+      <Name>CloudPlus.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.QueueModels\CloudPlus.QueueModels.csproj">
+      <Project>{2BF5C571-867E-412F-9E9D-44111638BEB0}</Project>
+      <Name>CloudPlus.QueueModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Resources\CloudPlus.Resources.csproj">
+      <Project>{B9D3C519-E8CE-4A49-93A7-12F11BE28F58}</Project>
+      <Name>CloudPlus.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Services.Database\CloudPlus.Services.Database.csproj">
+      <Project>{B4AEFE88-A2DB-4DFC-BC85-C5A40B5A59B0}</Project>
+      <Name>CloudPlus.Services.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Services.Identity\CloudPlus.Services.Identity.csproj">
+      <Project>{F9566E90-C4CD-4065-AE18-17CF862DD02C}</Project>
+      <Name>CloudPlus.Services.Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Services.Office365\CloudPlus.Services.Office365.csproj">
+      <Project>{49AD1234-0CC9-4870-BE8C-CD14E3CE9DDA}</Project>
+      <Name>CloudPlus.Services.Office365</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Settings\CloudPlus.Settings.csproj">
+      <Project>{C3F58C75-C371-44FF-A56E-85FCA4D2B6F5}</Project>
+      <Name>CloudPlus.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Workflows.Common\CloudPlus.Workflows.Common.csproj">
+      <Project>{7267831D-009B-419F-909F-205898A8653E}</Project>
+      <Name>CloudPlus.Workflows.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Workflows.Office365\CloudPlus.Workflows.Office365.csproj">
+      <Project>{33EC6157-C696-4093-8A3C-07B59ACF533E}</Project>
+      <Name>CloudPlus.Workflows.Office365</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Workflows.User\CloudPlus.Workflows.User.csproj">
+      <Project>{143FF40D-A440-4667-80CB-76257A408E06}</Project>
+      <Name>CloudPlus.Workflows.User</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Workflow\UserChangeLicense\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

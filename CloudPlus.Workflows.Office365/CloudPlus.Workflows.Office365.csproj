@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{33EC6157-C696-4093-8A3C-07B59ACF533E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloudPlus.Workflows.Office365</RootNamespace>
+    <AssemblyName>CloudPlus.Workflows.Office365</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GreenPipes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
+      <HintPath>..\packages\GreenPipes.1.0.9\lib\net452\GreenPipes.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\MassTransit.3.5.7\lib\net452\MassTransit.dll</HintPath>
+    </Reference>
+    <Reference Include="NewId, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\NewId.3.0.0\lib\net452\NewId.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Activities\Customer\ActivateSuspendedPartnerPlatformSubscription\ActivateSuspendedPartnerPlatformSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\ActivateSuspendedPartnerPlatformSubscription\ActivateSuspendedPartnerPlatformSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\ActivateSuspendedPartnerPlatformSubscription\IActivateSuspendedPartnerPlatformSubscriptionAcivity.cs" />
+    <Compile Include="Activities\Customer\ActivateSuspendedPartnerPlatformSubscription\IActivateSuspendedPartnerPlatformSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\ActivateSuspendedPartnerPlatformSubscription\IActivateSuspendedPartnerPlatformSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\CreateDatabaseSubscription\CreateDatabaseSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\CreateDatabaseSubscription\CreateDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\CreateDatabaseSubscription\ICreateDatabaseSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\CreateDatabaseSubscription\ICreateDatabaseSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\CreateDatabaseSubscription\ICreateDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\CreateOrder\CreateOrderActivity.cs" />
+    <Compile Include="Activities\Customer\CreateOrder\CreateOrderLog.cs" />
+    <Compile Include="Activities\Customer\CreateOrder\ICreateOrderActivity.cs" />
+    <Compile Include="Activities\Customer\CreateOrder\ICreateOrderArguments.cs" />
+    <Compile Include="Activities\Customer\CreateOrder\ICreateOrderLog.cs" />
+    <Compile Include="Activities\Customer\DatabaseCustomerSubscription\DatabaseCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\DatabaseCustomerSubscription\DatabaseCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\DatabaseCustomerSubscription\IDatabaseCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\DatabaseCustomerSubscription\IDatabaseCustomerSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\DatabaseCustomerSubscription\IDatabaseCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\DecreaseDatabaseCustomerSubscription\DecreaseDatabaseCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\DecreaseDatabaseCustomerSubscription\DecreaseDatabaseCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\DecreaseDatabaseCustomerSubscription\IDecreaseDatabaseCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\DecreaseDatabaseCustomerSubscription\IDecreaseDatabaseCustomerSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\DecreaseDatabaseCustomerSubscription\IDecreaseDatabaseCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\DecreasePartnerPlatformCustomerSubscription\DecreasePartnerPlatformCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\DecreasePartnerPlatformCustomerSubscription\DecreasePartnerPlatformCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\DecreasePartnerPlatformCustomerSubscription\IDecreasePartnerPlatformCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\DecreasePartnerPlatformCustomerSubscription\IDecreasePartnerPlatformCustomerSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\DecreasePartnerPlatformCustomerSubscription\IDecreasePartnerPlatformCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\ActivateSuspendedDatabaseSubscription\IActivateSuspendedDatabaseSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\ActivateSuspendedDatabaseSubscription\IActivateSuspendedDatabaseSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\ActivateSuspendedDatabaseSubscription\IActivateSuspendedDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\ActivateSuspendedDatabaseSubscription\ActivateSuspendedDatabaseSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\ActivateSuspendedDatabaseSubscription\ActivateSuspendedDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\SuspendDatabasesubscription\SuspendDatabasesubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\SuspendDatabasesubscription\SuspendDatabasesubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\SuspendDatabasesubscription\ISuspendDatabasesubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\SuspendDatabasesubscription\ISuspendDatabasesubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\SuspendDatabasesubscription\ISuspendDatabasesubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\MultiDatabaseCustomerSubscription\IMultiDatabaseCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\MultiDatabaseCustomerSubscription\IMultiDatabaseCustomerSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\MultiDatabaseCustomerSubscription\IMultiDatabaseCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\MultiDatabaseCustomerSubscription\MultiDatabaseCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\MultiDatabaseCustomerSubscription\MultiDatabaseCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\MultiPartnerPlatformCustomerSubscription\IMultiPartnerPlatformCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\MultiPartnerPlatformCustomerSubscription\IMultiPartnerPlatformCustomerSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\MultiPartnerPlatformCustomerSubscription\IMultiPartnerPlatformCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\MultiPartnerPlatformCustomerSubscription\MultiPartnerPlatformCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\MultiPartnerPlatformCustomerSubscription\MultiPartnerPlatformCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\PartnerPlatformCustomerSubscription\PartnerPlatformCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\PartnerPlatformCustomerSubscription\PartnerPlatformCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\PartnerPlatformCustomerSubscription\IPartnerPlatformCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\PartnerPlatformCustomerSubscription\IPartnerPlatformCustomerSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\PartnerPlatformCustomerSubscription\IPartnerPlatformCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\SuspendPartnerPlatformSubscription\ISuspendPartnerPlatformSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\SuspendPartnerPlatformSubscription\ISuspendPartnerPlatformSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\SuspendPartnerPlatformSubscription\ISuspendPartnerPlatformSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\SuspendPartnerPlatformSubscription\SuspendPartnerPlatformSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\SuspendPartnerPlatformSubscription\SuspendPartnerPlatformSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseCustomerSubscription\IUpdateDatabaseCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseCustomerSubscription\IUpdateDatabaseCustomerSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseCustomerSubscription\UpdateDatabaseCustomerSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscriptionQuantity\IUpdateDatabaseSubscriptionQuantityActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscriptionQuantity\IUpdateDatabaseSubscriptionQuantityArguments.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscriptionQuantity\IUpdateDatabaseSubscriptionQuantityLog.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscriptionQuantity\UpdateDatabaseSubscriptionQuantityActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscriptionQuantity\UpdateDatabaseSubscriptionQuantityLog.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscriptionState\IUpdateDatabaseSubscriptionStateActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscriptionState\IUpdateDatabaseSubscriptionStateArguments.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscriptionState\UpdateDatabaseSubscriptionStateActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscription__\IUpdateDatabaseSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscription__\IUpdateDatabaseSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscription__\IUpdateDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscription__\UpdateDatabaseSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateDatabaseSubscription__\UpdateDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\UpdatePartnerPlatformSubscriptionQuantity\IUpdatePartnerPlatformSubscriptionQuantityActivity.cs" />
+    <Compile Include="Activities\Customer\UpdatePartnerPlatformSubscriptionQuantity\IUpdatePartnerPlatformSubscriptionQuantityArguments.cs" />
+    <Compile Include="Activities\Customer\UpdatePartnerPlatformSubscriptionQuantity\IUpdatePartnerPlatformSubscriptionQuantityLog.cs" />
+    <Compile Include="Activities\Customer\UpdatePartnerPlatformSubscriptionQuantity\UpdatePartnerPlatformSubscriptionQuantityActivity.cs" />
+    <Compile Include="Activities\Customer\UpdatePartnerPlatformSubscriptionQuantity\UpdatePartnerPlatformSubscriptionQuantityLog.cs" />
+    <Compile Include="Activities\Domain\AddCustomerDomainPartnerPortalActivity\AddCustomerDomainPartnerPortalActivity.cs" />
+    <Compile Include="Activities\Domain\AddCustomerDomainPartnerPortalActivity\AddCustomerDomainPartnerPortalLog.cs" />
+    <Compile Include="Activities\Domain\AddCustomerDomainPartnerPortalActivity\IAddCustomerDomainPartnerPortalActivity.cs" />
+    <Compile Include="Activities\Domain\AddCustomerDomainPartnerPortalActivity\IAddCustomerDomainPartnerPortalArguments.cs" />
+    <Compile Include="Activities\Domain\AddCustomerDomainPartnerPortalActivity\IAddCustomerDomainPartnerPortalLog.cs" />
+    <Compile Include="Activities\Customer\CreateDatabaseCustomer\CreateDatabaseCustomerActivity.cs" />
+    <Compile Include="Activities\Customer\CreateDatabaseCustomer\CreateDatabaseCustomerLog.cs" />
+    <Compile Include="Activities\Customer\CreateDatabaseCustomer\ICreateDatabaseCustomerActivity.cs" />
+    <Compile Include="Activities\Customer\CreateDatabaseCustomer\ICreateDatabaseCustomerArguments.cs" />
+    <Compile Include="Activities\Customer\CreateDatabaseCustomer\ICreateDatabaseCustomerLog.cs" />
+    <Compile Include="Activities\Customer\CreatePartnerPlatformCustomer\CreatePartnerPlatformCustomerActivity.cs" />
+    <Compile Include="Activities\Customer\CreatePartnerPlatformCustomer\ICreatePartnerPlatformCustomerActivity.cs" />
+    <Compile Include="Activities\Customer\CreatePartnerPlatformCustomer\CreatePartnerPlatformCustomerLog.cs" />
+    <Compile Include="Activities\Customer\CreatePartnerPlatformCustomer\ICreatePartnerPlatformCustomerLog.cs" />
+    <Compile Include="Activities\Customer\CreatePartnerPlatformCustomer\ICreatePartnerPlatformCustomerArguments.cs" />
+    <Compile Include="Activities\Domain\AddCustomerDomainToDatabaseActivity\AddCustomerDomainToDatabaseActivity.cs" />
+    <Compile Include="Activities\Domain\AddCustomerDomainToDatabaseActivity\IAddCustomerDomainToDatabaseActivity.cs" />
+    <Compile Include="Activities\Domain\AddCustomerDomainToDatabaseActivity\IAddCustomerDomainToDatabaseArguments.cs" />
+    <Compile Include="Activities\Domain\AddMultiDomainToDatabase\AddMultiDomainToDatabaseActivity.cs" />
+    <Compile Include="Activities\Domain\AddMultiDomainToDatabase\AddMultiDomainToDatabaseLog.cs" />
+    <Compile Include="Activities\Domain\AddMultiDomainToDatabase\IAddMultiDomainToDatabaseActivity.cs" />
+    <Compile Include="Activities\Domain\AddMultiDomainToDatabase\IAddMultiDomainToDatabaseArguments.cs" />
+    <Compile Include="Activities\Domain\AddMultiDomainToDatabase\IAddMultiDomainToDatabaseLog.cs" />
+    <Compile Include="Activities\Domain\FederateCustomerDomainDatabaseStatus\FederateCustomerDomainDatabaseStatusActivity.cs" />
+    <Compile Include="Activities\Domain\FederateCustomerDomainDatabaseStatus\IFederateCustomerDomainDatabaseStatusActivity.cs" />
+    <Compile Include="Activities\Domain\FederateCustomerDomainDatabaseStatus\IFederateCustomerDomainDatabaseStatusArguments.cs" />
+    <Compile Include="Activities\Domain\FederateCustomerDomain\FederateCustomerDomainActivity.cs" />
+    <Compile Include="Activities\Domain\FederateCustomerDomain\IFederateCustomerDomainActivity.cs" />
+    <Compile Include="Activities\Domain\FederateCustomerDomain\IFederateCustomerDomainArguments.cs" />
+    <Compile Include="Activities\Domain\GetCustomerTxtRecords\GetCustomerDomainTxtRecordsActivity.cs" />
+    <Compile Include="Activities\Domain\GetCustomerTxtRecords\IGetCustomerDomainTxtRecordsActivity.cs" />
+    <Compile Include="Activities\Domain\GetCustomerTxtRecords\IGetCustomerDomainTxtRecordsArguments.cs" />
+    <Compile Include="Activities\Domain\SendCustomerTxtRecords\SendCustomerDomainTxtRecordsActivity.cs" />
+    <Compile Include="Activities\Domain\SendCustomerTxtRecords\ISendCustomerDomainTxtRecordsActivity.cs" />
+    <Compile Include="Activities\Domain\SendCustomerTxtRecords\ISendCustomerDomainTxtRecordsArguments.cs" />
+    <Compile Include="Activities\Domain\VerifyCustomerDomainDatabaseStatus\IVerifyCustomerDomainDatabaseStatusActivity.cs" />
+    <Compile Include="Activities\Domain\VerifyCustomerDomainDatabaseStatus\IVerifyCustomerDomainDatabaseStatusArguments.cs" />
+    <Compile Include="Activities\Domain\VerifyCustomerDomainDatabaseStatus\VerifyCustomerDomainDatabaseStatusActivity.cs" />
+    <Compile Include="Activities\Domain\VerifyCustomerDomain\IVerifyCustomerDomainActivity.cs" />
+    <Compile Include="Activities\Domain\VerifyCustomerDomain\IVerifyCustomerDomainArguments.cs" />
+    <Compile Include="Activities\Domain\VerifyCustomerDomain\VerifyCustomerDomainActivity.cs" />
+    <Compile Include="Activities\Transition\TransitionDispatchCreatingUser\ITransitionDispatchCreatingUsersActivity.cs" />
+    <Compile Include="Activities\Transition\TransitionDispatchCreatingUser\ITransitionDispatchCreatingUsersArguments.cs" />
+    <Compile Include="Activities\Transition\TransitionDispatchCreatingUser\TransitionDispatchCreatingUsersActivity.cs" />
+    <Compile Include="Activities\Transition\DatabaseProvisionedStatusProvisioned\IDatabaseProvisionedStatusProvisionedActivity.cs" />
+    <Compile Include="Activities\Transition\DatabaseProvisionedStatusProvisioned\IDatabaseProvisionedStatusProvisionedArguments.cs" />
+    <Compile Include="Activities\Transition\DatabaseProvisionedStatusProvisioned\IDatabaseProvisionedStatusProvisionedLog.cs" />
+    <Compile Include="Activities\Transition\DatabaseProvisionedStatusProvisioned\DatabaseProvisionedStatusProvisionedActivity.cs" />
+    <Compile Include="Activities\Transition\DatabaseProvisionedStatusProvisioned\DatabaseProvisionedStatusProvisionedLog.cs" />
+    <Compile Include="Activities\User\ActivateSoftDeletedDatabaseUser\ActivateSoftDeletedDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\ActivateSoftDeletedDatabaseUser\ActivateSoftDeletedDatabaseUserLog.cs" />
+    <Compile Include="Activities\User\ActivateSoftDeletedDatabaseUser\IActivateSoftDeletedDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\ActivateSoftDeletedDatabaseUser\IActivateSoftDeletedDatabaseUserArguments.cs" />
+    <Compile Include="Activities\User\ActivateSoftDeletedDatabaseUser\IActivateSoftDeletedDatabaseUserLog.cs" />
+    <Compile Include="Activities\User\AssignUserRoles\AssignUserRolesActivity.cs" />
+    <Compile Include="Activities\User\AssignUserRoles\IAssignUserRolesActivity.cs" />
+    <Compile Include="Activities\User\AssignUserRoles\IAssignUserRolesArguments.cs" />
+    <Compile Include="Activities\User\AssignLicenseToDatabaseUser\AssignLicenseToDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\AssignLicenseToDatabaseUser\IAssignLicenseToDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\AssignLicenseToDatabaseUser\IAssignLicenseToDatabaseUserArguments.cs" />
+    <Compile Include="Activities\User\CreateTempPartnerPlatformAdminUser\CreateTempPartnerPlatformAdminUserActivity.cs" />
+    <Compile Include="Activities\User\CreateTempPartnerPlatformAdminUser\ICreateTempPartnerPlatformAdminUserActivity.cs" />
+    <Compile Include="Activities\User\CreateTempPartnerPlatformAdminUser\ICreateTempPartnerPlatformAdminUserArguments.cs" />
+    <Compile Include="Activities\User\DeleteDatabaseUser\DeleteDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\DeleteDatabaseUser\IDeleteDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\DeleteDatabaseUser\IDeleteDatabaseUserArguments.cs" />
+    <Compile Include="Activities\User\DeletePartnerPlatformUser\DeletePartnerPlatformUserActivity.cs" />
+    <Compile Include="Activities\User\DeletePartnerPlatformUser\DeletePartnerPlatformUserLog.cs" />
+    <Compile Include="Activities\User\DeletePartnerPlatformUser\IDeletePartnerPlatformUserActivity.cs" />
+    <Compile Include="Activities\User\DeletePartnerPlatformUser\IDeletePartnerPlatformUserArguments.cs" />
+    <Compile Include="Activities\User\DeletePartnerPlatformUser\IDeletePartnerPlatformUserLog.cs" />
+    <Compile Include="Activities\User\GetUserRoles\GetUserRolesActivity.cs" />
+    <Compile Include="Activities\User\GetUserRoles\IGetUserRolesActivity.cs" />
+    <Compile Include="Activities\User\GetUserRoles\IGetUserRolesArguments.cs" />
+    <Compile Include="Activities\User\HardDeletePartnerPlatformUser\HardDeletePartnerPlatformUserActivity.cs" />
+    <Compile Include="Activities\User\HardDeletePartnerPlatformUser\IHardDeletePartnerPlatformUserActivity.cs" />
+    <Compile Include="Activities\User\HardDeletePartnerPlatformUser\IHardDeletePartnerPlatformUserArguments.cs" />
+    <Compile Include="Activities\Domain\SendDomainVerifiedEmail\ISendDomainVerifiedEmailActivity.cs" />
+    <Compile Include="Activities\Domain\SendDomainVerifiedEmail\ISendDomainVerifiedEmailArguments.cs" />
+    <Compile Include="Activities\Domain\SendDomainVerifiedEmail\SendDomainVerifiedEmailActivity.cs" />
+    <Compile Include="Activities\User\RemoveAllLicensesPartnerPortalUser\IRemoveAllLicensesPartnerPortalUserActivity.cs" />
+    <Compile Include="Activities\User\RemoveAllLicensesPartnerPortalUser\IRemoveAllLicensesPartnerPortalUserArguments.cs" />
+    <Compile Include="Activities\User\RemoveAllLicensesPartnerPortalUser\RemoveAllLicensesPartnerPortalUserActivity.cs" />
+    <Compile Include="Activities\User\RemoveLicenseDatabaseUser\IRemoveLicenseDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\RemoveLicenseDatabaseUser\IRemoveLicenseDatabaseUserArguments.cs" />
+    <Compile Include="Activities\User\RemoveLicenseDatabaseUser\IRemoveLicenseDatabaseUserLog.cs" />
+    <Compile Include="Activities\User\RemoveLicenseDatabaseUser\RemoveLicenseDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\RemoveLicenseDatabaseUser\RemoveLicenseDatabaseUserLog.cs" />
+    <Compile Include="Activities\User\RemoveLicensePartnerPortalUser\IRemoveLicensePartnerPortalUserActivity.cs" />
+    <Compile Include="Activities\User\RemoveLicensePartnerPortalUser\IRemoveLicensePartnerPortalUserArguments.cs" />
+    <Compile Include="Activities\User\RemoveLicensePartnerPortalUser\IRemoveLicensePartnerPortalUserLog.cs" />
+    <Compile Include="Activities\User\RemoveLicensePartnerPortalUser\RemoveLicensePartnerPortalUserActivity.cs" />
+    <Compile Include="Activities\User\RemoveLicensePartnerPortalUser\RemoveLicensePartnerPortalUserLog.cs" />
+    <Compile Include="Activities\User\RemoveUserRoles\IRemoveUserRolesActivity.cs" />
+    <Compile Include="Activities\User\RemoveUserRoles\IRemoveUserRolesArguments.cs" />
+    <Compile Include="Activities\User\RemoveUserRoles\IRemoveUserRolesLog.cs" />
+    <Compile Include="Activities\User\RemoveUserRoles\RemoveUserRolesActivity.cs" />
+    <Compile Include="Activities\User\RemoveUserRoles\RemoveUserRolesLog.cs" />
+    <Compile Include="Activities\User\RestorePartnerPlatformUser\IRestorePartnerPlatformUserActivity.cs" />
+    <Compile Include="Activities\User\RestorePartnerPlatformUser\IRestorePartnerPlatformUserArguments.cs" />
+    <Compile Include="Activities\User\RestorePartnerPlatformUser\IRestorePartnerPlatformUserLog.cs" />
+    <Compile Include="Activities\User\RestorePartnerPlatformUser\RestorePartnerPlatformUserActivity.cs" />
+    <Compile Include="Activities\User\RestorePartnerPlatformUser\RestorePartnerPlatformUserLog.cs" />
+    <Compile Include="Activities\User\SetImmutableId\ISetImmutableIdActivity.cs" />
+    <Compile Include="Activities\User\SetImmutableId\SetImmutableIdActivity.cs" />
+    <Compile Include="Activities\User\SetImmutableId\SetImmutableIdArguments.cs" />
+    <Compile Include="Activities\User\SoftDeleteDatabaseUser\ISoftDeleteDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\SoftDeleteDatabaseUser\ISoftDeleteDatabaseUserArguments.cs" />
+    <Compile Include="Activities\User\SoftDeleteDatabaseUser\ISoftDeleteDatabaseUserLog.cs" />
+    <Compile Include="Activities\User\SoftDeleteDatabaseUser\SoftDeleteDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\SoftDeleteDatabaseUser\SoftDeleteDatabaseUserLog.cs" />
+    <Compile Include="Mappers\ActivityOffice365AddAdditionalDomainArgumentsMapper.cs" />
+    <Compile Include="Activities\User\AssignLicenseToPartnerPlatformUser\AssignLicenseToPartnerPlatformUserActivity.cs" />
+    <Compile Include="Activities\User\AssignLicenseToPartnerPlatformUser\IAssignLicenseToPartnerPlatformUserActivity.cs" />
+    <Compile Include="Activities\User\AssignLicenseToPartnerPlatformUser\IAssignLicenseToPartnerPlatformUserArguments.cs" />
+    <Compile Include="Activities\User\CreateDatabaseUser\CreateDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\CreateDatabaseUser\CreateDatabaseUserLog.cs" />
+    <Compile Include="Activities\User\CreateDatabaseUser\ICreateDatabaseUserActivity.cs" />
+    <Compile Include="Activities\User\CreateDatabaseUser\ICreateDatabaseUserArguments.cs" />
+    <Compile Include="Activities\User\CreateDatabaseUser\ICreateDatabaseUserLog.cs" />
+    <Compile Include="Activities\User\CreatePartnerPlatformUser\CreatePartnerPlatformUserActivity.cs" />
+    <Compile Include="Activities\User\CreatePartnerPlatformUser\CreatePartnerPlatformUserLog.cs" />
+    <Compile Include="Activities\User\CreatePartnerPlatformUser\ICreatePartnerPlatformUserActivity.cs" />
+    <Compile Include="Activities\User\CreatePartnerPlatformUser\ICreatePartnerPlatformUserArguments.cs" />
+    <Compile Include="Activities\User\CreatePartnerPlatformUser\ICreatePartnerPlatformUserLog.cs" />
+    <Compile Include="Activities\User\SendUserSetupEmail\ISendUserSetupEmailActivity.cs" />
+    <Compile Include="Activities\User\SendUserSetupEmail\ISendUserSetupEmailArguments.cs" />
+    <Compile Include="Activities\User\SendUserSetupEmail\SendUserSetupEmailActivity.cs" />
+    <Compile Include="Mappers\ActivityOffice365CustomerArgumentsMapper.cs" />
+    <Compile Include="Mappers\ActivityOffice365UserChangeRolesMapper.cs" />
+    <Compile Include="Mappers\ActivityOffice365UserRestoreMapper.cs" />
+    <Compile Include="Mappers\IActivityOffice365AddAdditionalDomainArgumentsMapper.cs" />
+    <Compile Include="Mappers\ActivityOffice365UserArgumentsMapper.cs" />
+    <Compile Include="Mappers\IActivityOffice365CustomerArgumentsMapper.cs" />
+    <Compile Include="Mappers\IActivityOffice365UserArgumentsMapper.cs" />
+    <Compile Include="Mappers\IActivityOffice365UserChangeRolesMapper.cs" />
+    <Compile Include="Mappers\IActivityOffice365UserRestoreMapper.cs" />
+    <Compile Include="Mappers\IActivityOffice365TransitionArgumentsMapper.cs" />
+    <Compile Include="Mappers\ActivityOffice365TransitionArgumentsMapper.cs" />
+    <Compile Include="Mappers\IActivityOffice365TransitionUserAndLicensesArgumentsMapper.cs" />
+    <Compile Include="Mappers\ActivityOffice365TransitionUserAndLicensesArgumentsMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudPlus.Constants\CloudPlus.Constants.csproj">
+      <Project>{8FCBB4C6-81D6-4076-99A4-81EF751B71BB}</Project>
+      <Name>CloudPlus.Constants</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Enums\CloudPlus.Enums.csproj">
+      <Project>{194F3BA1-550A-4011-B630-F4DF7103B3AB}</Project>
+      <Name>CloudPlus.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Exceptions\CloudPlus.Exceptions.csproj">
+      <Project>{9BABEF3B-070B-4E66-9C3F-633A22DBB559}</Project>
+      <Name>CloudPlus.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Infrastructure.ServiceBus\CloudPlus.Infrastructure.ServiceBus.csproj">
+      <Project>{C37348EC-9EFE-4250-905F-090BC153F623}</Project>
+      <Name>CloudPlus.Infrastructure.ServiceBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Logging\CloudPlus.Logging.csproj">
+      <Project>{6EFCCC98-F658-4557-A7B2-78074B200FE3}</Project>
+      <Name>CloudPlus.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Models\CloudPlus.Models.csproj">
+      <Project>{44B6ADC2-BAD0-4A6B-8056-3D417BFCCA6C}</Project>
+      <Name>CloudPlus.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.QueueModels\CloudPlus.QueueModels.csproj">
+      <Project>{2BF5C571-867E-412F-9E9D-44111638BEB0}</Project>
+      <Name>CloudPlus.QueueModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Resources\CloudPlus.Resources.csproj">
+      <Project>{B9D3C519-E8CE-4A49-93A7-12F11BE28F58}</Project>
+      <Name>CloudPlus.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Services.Database\CloudPlus.Services.Database.csproj">
+      <Project>{B4AEFE88-A2DB-4DFC-BC85-C5A40B5A59B0}</Project>
+      <Name>CloudPlus.Services.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Services.Identity\CloudPlus.Services.Identity.csproj">
+      <Project>{F9566E90-C4CD-4065-AE18-17CF862DD02C}</Project>
+      <Name>CloudPlus.Services.Identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Services.Office365\CloudPlus.Services.Office365.csproj">
+      <Project>{49AD1234-0CC9-4870-BE8C-CD14E3CE9DDA}</Project>
+      <Name>CloudPlus.Services.Office365</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Settings\CloudPlus.Settings.csproj">
+      <Project>{C3F58C75-C371-44FF-A56E-85FCA4D2B6F5}</Project>
+      <Name>CloudPlus.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPlus.Workflows.Common\CloudPlus.Workflows.Common.csproj">
+      <Project>{7267831d-009b-419f-909f-205898a8653e}</Project>
+      <Name>CloudPlus.Workflows.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
