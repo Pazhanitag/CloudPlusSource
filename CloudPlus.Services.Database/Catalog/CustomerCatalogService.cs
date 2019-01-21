@@ -43,7 +43,10 @@ namespace CloudPlus.Services.Database.Catalog
                 Description = p.ProductItem.Description,
                 IsAddon = p.ProductItem.IsAddon,
                 Identifier = p.ProductItem.Identifier,
-                Cost = company.Type == 1 ? p.RetailPrice : p.ResellerPrice
+                Cost = company.Type == 1 ? p.RetailPrice : p.ResellerPrice,
+                InCompatibleServices=_dbContext.Office365InCompatibleService.Where(x=>x.IsDeleted==false && x.ServiceId== p.ProductItem.Identifier).Select(x=>new ServiceIdentifier() {  identifier=x.CompatibleServiceId}).ToList(),
+                AddonServices=(from _productAddon in _dbContext.ProductAddons join _prductItem in _dbContext.ProductItems on _productAddon.ProductItemAddonIdentifier equals _prductItem.Identifier
+                                where _productAddon.IsDeleted == false && _productAddon.ProductItemIdentifier == p.ProductItem.Identifier select new AddonServiceIdentifier {  identifier= _prductItem.Identifier,Name=_prductItem.Name}).ToList()
             });
            // productItems = company.Type == 1? productItems.Where(x => x.Name != "(#CustomerName#) Support").ToList(): productItems;
 
@@ -88,7 +91,12 @@ namespace CloudPlus.Services.Database.Catalog
                 Description = p.ProductItem.Description,
                 IsAddon = p.ProductItem.IsAddon,
                 Cost = company.Type == 1 ? p.RetailPrice : p.ResellerPrice,
-                Identifier = p.ProductItem.Identifier
+                Identifier = p.ProductItem.Identifier,
+                InCompatibleServices=_dbContext.Office365InCompatibleService.Where(x=>x.IsDeleted==false &&x.ServiceId== p.ProductItem.Identifier).Select(x=>new ServiceIdentifier {  identifier=x.CompatibleServiceId}),
+                AddonServices = (from _productAddon in _dbContext.ProductAddons
+                                 join _prductItem in _dbContext.ProductItems on _productAddon.ProductItemAddonIdentifier equals _prductItem.Identifier
+                                 where _productAddon.IsDeleted == false && _productAddon.ProductItemIdentifier == p.ProductItem.Identifier
+                                 select new AddonServiceIdentifier { identifier = _prductItem.Identifier, Name = _prductItem.Name }).ToList()
             });
 
             var product = assignedCatalog.Catalog.CatalogProductItems.FirstOrDefault(p => p.ProductItem.Product != null && p.ProductItem.Product.Id == productId)?.ProductItem.Product;

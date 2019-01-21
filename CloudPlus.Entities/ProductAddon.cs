@@ -19,6 +19,6 @@ namespace CloudPlus.Entities.Catalog
         public DateTime UpdateDate { get; set; }
         public string ProductItemIdentifier { get; set; }
         public string ProductItemAddonIdentifier { get; set; }
-
+       
     }
 }

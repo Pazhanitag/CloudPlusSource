@@ -227,6 +227,7 @@ namespace CloudPlus.Api.Mappers
                 DisplayName = user.DisplayName,
                 IsProvisioned = user.IsProvisioned,
                 AssignedLicense = user.AssignedLicense,
+                 AssignedLicenses=user.AssignedLicenses,
                 ProfilePicture = !string.IsNullOrWhiteSpace(user.ProfilePicture)
                     ? $"{urlContent}Static/Images/ProfilePicture/{user.ProfilePicture}"
                     : "",

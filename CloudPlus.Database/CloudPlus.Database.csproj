@@ -93,6 +93,22 @@
     <Compile Include="Migrations\201812261442290_AddCompatibleMatrixOffice365.Designer.cs">
       <DependentUpon>201812261442290_AddCompatibleMatrixOffice365.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901181506347_Addon and incompartable License Table.cs" />
+    <Compile Include="Migrations\201901181506347_Addon and incompartable License Table.Designer.cs">
+      <DependentUpon>201901181506347_Addon and incompartable License Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901190525462_ProductAddonmapping.cs" />
+    <Compile Include="Migrations\201901190525462_ProductAddonmapping.Designer.cs">
+      <DependentUpon>201901190525462_ProductAddonmapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901190539109_RemoveProductAddOn.cs" />
+    <Compile Include="Migrations\201901190539109_RemoveProductAddOn.Designer.cs">
+      <DependentUpon>201901190539109_RemoveProductAddOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901210852599_AddIsAddoninoffice365offer.cs" />
+    <Compile Include="Migrations\201901210852599_AddIsAddoninoffice365offer.Designer.cs">
+      <DependentUpon>201901210852599_AddIsAddoninoffice365offer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\CatalogUtilities.cs" />
@@ -155,6 +171,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812261442290_AddCompatibleMatrixOffice365.resx">
       <DependentUpon>201812261442290_AddCompatibleMatrixOffice365.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901181506347_Addon and incompartable License Table.resx">
+      <DependentUpon>201901181506347_Addon and incompartable License Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901190525462_ProductAddonmapping.resx">
+      <DependentUpon>201901190525462_ProductAddonmapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901190539109_RemoveProductAddOn.resx">
+      <DependentUpon>201901190539109_RemoveProductAddOn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901210852599_AddIsAddoninoffice365offer.resx">
+      <DependentUpon>201901210852599_AddIsAddoninoffice365offer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

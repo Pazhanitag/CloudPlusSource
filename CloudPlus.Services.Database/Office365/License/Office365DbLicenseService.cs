@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,26 +24,30 @@ namespace CloudPlus.Services.Database.Office365.License
             _office365DbUserService = office365DbUserService;
         }
 
-        public async Task<Office365LicenseModel> GetUserAssgnedLicenseAsync(string userPrincipalName)
+        public async Task<List<Office365OfferModel>> GetUserAssgnedLicenseAsync(string userPrincipalName)
         {
             var license = await _cldpDbContext.Office365Licenses
-                .Include(i => i.Office365Offer)
-                .FirstOrDefaultAsync(l => l.Office365User.UserPrincipalName == userPrincipalName);
+                .Include(i => i.Office365Offer).Where(l => l.Office365User.UserPrincipalName == userPrincipalName)
+                .Select(x=>new Office365OfferModel() { CloudPlusProductIdentifier=x.Office365Offer.CloudPlusProductIdentifier,
+                                                         OfferName=x.Office365Offer.Office365OfferName, IsAddon= x.Office365Offer.IsAddon
 
-            if (license == null) return null;
+                }).ToListAsync();
+            // .FirstOrDefaultAsync(l => l.Office365User.UserPrincipalName == userPrincipalName);
+           
+            return license;
 
-            return new Office365LicenseModel
-            {
-                Id = license.Id,
-                Office365Offer = new Office365OfferModel
-                {
-                    Id = license.Office365Offer.Id,
-                    Office365Id = license.Office365Offer.Office365OfferId,
-                    OfferName = license.Office365Offer.Office365OfferName,
-                    Sku = license.Office365Offer.Office365ProductSku,
-                    CloudPlusProductIdentifier = license.Office365Offer.CloudPlusProductIdentifier
-                }
-            };
+            //return new Office365LicenseModel
+            //{
+            //    Id = license.Id,
+            //    Office365Offer = new Office365OfferModel
+            //    {
+            //        Id = license.Office365Offer.Id,
+            //        Office365Id = license.Office365Offer.Office365OfferId,
+            //        OfferName = license.Office365Offer.Office365OfferName,
+            //        Sku = license.Office365Offer.Office365ProductSku,
+            //        CloudPlusProductIdentifier = license.Office365Offer.CloudPlusProductIdentifier
+            //    }
+            //};
         }
 
         public async Task CreateOffice365UserLicense(string userPrincipalName, string cloudPlusProductIdentifier)

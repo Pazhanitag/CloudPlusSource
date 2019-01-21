@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CloudPlus.Enums.Provisions;
 using CloudPlus.Enums.User;
+using CloudPlus.Models.Provisions;
 
 namespace CloudPlus.Models.Identity
 {
@@ -32,5 +33,6 @@ namespace CloudPlus.Models.Identity
         public bool IsProvisioned { get; set; }
         //TODO This should be refactored together with above code, this is concerned with office365 licenses
         public string AssignedLicense { get; set; } = "No package assigned";
+        public List<AssignedServicesModel> AssignedLicenses { get; set; } = new List<AssignedServicesModel>() { };
     }
 }

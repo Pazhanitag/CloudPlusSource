@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CloudPlus.Entities.Catalog
@@ -9,7 +10,9 @@ namespace CloudPlus.Entities.Catalog
 		{
 			CreateDate = DateTime.UtcNow;
 			UpdateDate = DateTime.UtcNow;
-		}
+            
+
+        }
 
 		public int Id { get; set; }
 		public string Identifier { get; set; }
@@ -37,5 +40,6 @@ namespace CloudPlus.Entities.Catalog
 		public bool IsDeleted { get; set; }
 		public DateTime CreateDate { get; set; }
 		public DateTime UpdateDate { get; set; }
-	}
+        
+    }
 }

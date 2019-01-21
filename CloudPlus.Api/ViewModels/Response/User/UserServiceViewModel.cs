@@ -1,4 +1,6 @@
 ﻿using CloudPlus.Enums.Provisions;
+using CloudPlus.Models.Provisions;
+using System.Collections.Generic;
 
 namespace CloudPlus.Api.ViewModels.Response.User
 {
@@ -9,6 +11,7 @@ namespace CloudPlus.Api.ViewModels.Response.User
         public string Name { get; set; }
         public string Vendor { get; set; }
         public string AssignedLicense { get; set; }
+        public List<AssignedServicesModel> AssignedLicenses { get; set; }
         public UserProvisioningStatus Status { get; set; }
         public string StatusToDisplay
         {

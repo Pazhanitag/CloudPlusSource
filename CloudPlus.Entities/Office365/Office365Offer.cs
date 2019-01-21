@@ -19,5 +19,6 @@ namespace CloudPlus.Entities.Office365
         public string Office365OfferName { get; set; }
         public string Office365ProductSku { get; set; }
         public string CloudPlusProductIdentifier { get; set; }
+        public bool IsAddon { get; set; }
     }
 }

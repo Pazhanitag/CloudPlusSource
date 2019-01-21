@@ -200,6 +200,128 @@ namespace CloudPlus.Services.Database.WorkflowActivity.Office365
             return CheckStatusV2(allActivitiesPrincipal);
         }
 
+
+        //Start individual license status checking 
+
+        public bool IsOffice365UserLicenceAssignmentForLicenseInProgress(string userPrincipalName,string License)
+        {
+            var manageSubscription = IsOffice365ManageSubscriptionInProgress(userPrincipalName);
+
+            if (manageSubscription) return true;
+
+            var activities = _workflowActivityService.Get(new Dictionary<string, object>
+            {
+                { "Data.userPrincipalName", userPrincipalName },
+                { "Data.workflowActivityType", WorkflowActivityType.Office365UserAssignLicense.ToString() },
+                { "Data.cloudPlusProductIdentifier",License }
+            }).OrderBy(o => o.Context.Timestamp).ToList();
+
+            if (!activities.Any()) return false;
+
+            if (activities.Count > 1)
+                activities = _workflowActivityService
+                    .Get("TrackingNumber", activities.LastOrDefault()?.Context.TrackingNumber).ToList();
+
+            return CheckStatusV2(activities);
+        }
+
+        public bool IsOffice365UserLicenceChangingForLicenseInProgress(string userPrincipalName,string License)
+        {
+            var manageSubscription = IsOffice365ManageSubscriptionInProgress(userPrincipalName);
+
+            if (manageSubscription) return true;
+
+            var activities = _workflowActivityService.Get(new Dictionary<string, object>
+            {
+                { "Data.userPrincipalName", userPrincipalName },
+                { "Data.workflowActivityType", WorkflowActivityType.Office365UserChangeLicense.ToString() },
+                 { "Data.cloudPlusProductIdentifier",License }
+            }).OrderBy(o => o.Context.Timestamp).ToList();
+
+            if (!activities.Any()) return false;
+
+            if (activities.Count > 1)
+                activities = _workflowActivityService
+                    .Get("TrackingNumber", activities.LastOrDefault()?.Context.TrackingNumber).ToList();
+
+            return CheckStatusV2(activities);
+        }
+
+        public bool IsOffice365UserLicenceRemovalForLicenseInProgress(string userPrincipalName,string License)
+        {
+            var manageSubscription = IsOffice365ManageSubscriptionInProgress(userPrincipalName);
+
+            if (manageSubscription) return true;
+
+            var activities = _workflowActivityService.Get(new Dictionary<string, object>
+            {
+                { "Data.userPrincipalName", userPrincipalName },
+                { "Data.workflowActivityType", WorkflowActivityType.Office365UserRemoveLicense.ToString() },
+                 { "Data.cloudPlusProductIdentifier",License }
+            }).OrderBy(o => o.Context.Timestamp).ToList();
+
+            if (!activities.Any()) return false;
+
+            if (activities.Count > 1)
+                activities = _workflowActivityService
+                    .Get("TrackingNumber", activities.LastOrDefault()?.Context.TrackingNumber).ToList();
+
+            return CheckStatusV2(activities);
+        }
+
+        public bool IsOffice365UserLicenceRestoreForLicenseInProgress(string userPrincipalName, string License)
+        {
+            var manageSubscription = IsOffice365ManageSubscriptionInProgress(userPrincipalName);
+
+            if (manageSubscription) return true;
+
+            var activities = _workflowActivityService.Get(new Dictionary<string, object>
+            {
+                { "Data.userPrincipalName", userPrincipalName },
+                { "Data.workflowActivityType", WorkflowActivityType.Office365UserRestore.ToString() },
+                 { "Data.cloudPlusProductIdentifier",License }
+            }).OrderBy(o => o.Context.Timestamp).ToList();
+
+            if (!activities.Any()) return false;
+
+            if (activities.Count > 1)
+                activities = _workflowActivityService
+                    .Get("TrackingNumber", activities.LastOrDefault()?.Context.TrackingNumber).ToList();
+
+            return CheckStatusV2(activities);
+        }
+
+        public bool IsOffice365ManageSubscriptionForLicenseInProgress(string userPrincipalName, string License)
+        {
+            var activities = _workflowActivityService.Get(new Dictionary<string, object>
+            {
+                { "Data.userPrincipalName", userPrincipalName },
+                { "Data.workflowActivityType", WorkflowActivityType.Office365ManageSubscription.ToString() },
+                 { "Data.cloudPlusProductIdentifier",License }
+            }).OrderBy(o => o.Context.Timestamp).ToList();
+
+            if (!activities.Any()) return false;
+
+            var manageSubscriptionActivities = _workflowActivityService
+                .Get("Data.workflowActivityType", WorkflowActivityType.Office365ManageSubscription.ToString()).ToList();
+
+            var allActivities = manageSubscriptionActivities.Where(a => a.UniqueId == activities.Last().UniqueId).ToList();
+
+            var allActivitiesPrincipal = new List<WorkflowActivityDto>();
+
+            foreach (var activity in allActivities)
+            {
+                if (activity.Context.Data.Values.Any(p => p.ToString().ToLower() == userPrincipalName.ToLower()))
+                    allActivitiesPrincipal.Add(activity);
+                else
+                    if (activity.Context.Data.Values.Any(p => p.ToString().ToLower().Contains(userPrincipalName.ToLower())))
+                    allActivitiesPrincipal.Add(activity);
+            }
+
+            return CheckStatusV2(allActivitiesPrincipal);
+        }
+
+        //End For Individual License
         public bool IsOffice365TransitionInProgress(int companyId)
         {
             var activities = _workflowActivityService.Get(new Dictionary<string, object>

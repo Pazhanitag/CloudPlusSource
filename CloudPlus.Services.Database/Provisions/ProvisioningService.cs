@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -133,16 +134,30 @@ namespace CloudPlus.Services.Database.Provisions
             userService.Vendor = product.Vendor;
             userService.ImgUrl = product.ImgUrl;
 
-            userService.Status = await GetUserOffice365ProvisioningStatus(username);
+            userService.Status = await GetUserOffice365ProvisioningStatusforband(username);
 
-            if (userService.Status != UserProvisioningStatus.Assigned) return userService;
+            if (userService.Status != UserProvisioningStatus.Available) return userService;
 
             var assignedLicense = await _office365DbLicenseService.GetUserAssgnedLicenseAsync(username);
-            if (assignedLicense != null)
+            if (assignedLicense.Count>0)
             {
-                userService.AssignedLicense = product.ProductItems.FirstOrDefault(i =>
-                    i.Identifier == assignedLicense.Office365Offer.CloudPlusProductIdentifier)?.Name;
+                userService.AssignedLicense = string.Join(", ",assignedLicense.Select(x=>x.OfferName));
+
             }
+            //List<AssignedServicesModel> Assignli = new List<AssignedServicesModel>();
+            //assignedLicense.ForEach(ass => {
+            //    AssignedServicesModel Al = new AssignedServicesModel()
+            //    { cloudPlusProductIdentifier=ass.CloudPlusProductIdentifier,
+            //      offerName= ass.OfferName,
+            //       Status= GetUserOffice365ProvisioningStatus(username, ass.CloudPlusProductIdentifier)
+            //    };
+            //});
+            userService.AssignedLicenses = assignedLicense.Select(x => new AssignedServicesModel()
+            {
+                cloudPlusProductIdentifier = x.CloudPlusProductIdentifier,
+                offerName = x.OfferName,
+                Status = GetUserOffice365ProvisioningStatus(username, x.CloudPlusProductIdentifier)
+            }).ToList();
 
             return userService;
         }
@@ -173,6 +188,48 @@ namespace CloudPlus.Services.Database.Provisions
                     return UserProvisioningStatus.Removed;
             }
 
+            var domain = username.Split('@')[1];
+            var isDomainVerified = await _office365DomainService.IsDomainVerified(domain);
+
+            return isDomainVerified ? UserProvisioningStatus.Available : UserProvisioningStatus.NotAvailable;
+        }
+
+        private UserProvisioningStatus GetUserOffice365ProvisioningStatus(string username,string License)
+        {
+            var isServiceAssignmentInProgress = _workflowOffice365ActivityService.IsOffice365UserLicenceAssignmentForLicenseInProgress(username, License);
+            if (isServiceAssignmentInProgress)
+                return UserProvisioningStatus.InProgress;
+
+            var isServiceChangingInProgress = _workflowOffice365ActivityService.IsOffice365UserLicenceChangingForLicenseInProgress(username, License);
+            if (isServiceChangingInProgress)
+                return UserProvisioningStatus.InProgress;
+
+            var isServiceRemovalInProgress = _workflowOffice365ActivityService.IsOffice365UserLicenceRemovalForLicenseInProgress(username, License);
+            if (isServiceRemovalInProgress)
+                return UserProvisioningStatus.InProgress;
+
+            var isServiceRestoreInProgress = _workflowOffice365ActivityService.IsOffice365UserLicenceRestoreForLicenseInProgress(username, License);
+            if (isServiceRestoreInProgress)
+                return UserProvisioningStatus.InProgress;
+
+            return UserProvisioningStatus.Assigned;
+
+        }
+
+        private async Task<UserProvisioningStatus>GetUserOffice365ProvisioningStatusforband(string username)
+        {
+            var isRolesChangingInProgress = _workflowOffice365ActivityService.IsOffice365UserRolesChangingInProgress(username);
+            if (isRolesChangingInProgress)
+                return UserProvisioningStatus.InProgress;
+
+            var office365UserState = await _office365UserService.GetOffice365UserState(username);
+            switch (office365UserState)
+            {
+                case Office365UserState.Active:
+                    return UserProvisioningStatus.Available;
+                case Office365UserState.Inactive:
+                    return UserProvisioningStatus.NotAvailable;
+            }
             var domain = username.Split('@')[1];
             var isDomainVerified = await _office365DomainService.IsDomainVerified(domain);
 

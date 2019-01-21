@@ -94,7 +94,9 @@ namespace CloudPlus.Api.Mappers
                 Name = customerProductItemModel.Name,
                 Description = customerProductItemModel.Description.Replace(imageServerOffice365IconsPathPlaceholder, imageServerPath),
                 Cost = customerProductItemModel.Cost,
-                Identifier = customerProductItemModel.Identifier
+                Identifier = customerProductItemModel.Identifier,
+                InCompatibleServices= customerProductItemModel.InCompatibleServices,
+                 AddonServices=customerProductItemModel.AddonServices
             };
         }
     }

@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Catalog\AddonServiceIdentifier.cs" />
     <Compile Include="Catalog\CatalogProductModel.cs" />
     <Compile Include="Catalog\CustomerProductItemModel.cs" />
     <Compile Include="Catalog\CustomerProductModel.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Catalog\ResellerCatalogModel.cs" />
     <Compile Include="Catalog\ResellerProductItemModel.cs" />
     <Compile Include="Catalog\ResellerProductModel.cs" />
+    <Compile Include="Catalog\ServiceIdentifier.cs" />
     <Compile Include="Category\CategoryModel.cs" />
     <Compile Include="Company\CompanyCountModel.cs" />
     <Compile Include="Company\CompanyDetails.cs" />
@@ -135,6 +137,7 @@
     <Compile Include="Product\ProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Identity\UserModel.cs" />
+    <Compile Include="Provisions\AssignedServicesModel.cs" />
     <Compile Include="Provisions\ProvisionedServiceModel.cs" />
     <Compile Include="Support\CustomSecureControlPanelModel.cs" />
     <Compile Include="Support\SupportModel.cs" />

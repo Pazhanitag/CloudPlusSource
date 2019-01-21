@@ -7,5 +7,6 @@
         public string OfferName { get; set; }
         public string Sku { get; set; } // ?????
         public string CloudPlusProductIdentifier { get; set; }
+        public bool IsAddon { get; set; }
     }
 }

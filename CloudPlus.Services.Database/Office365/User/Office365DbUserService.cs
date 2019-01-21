@@ -10,6 +10,7 @@ using CloudPlus.Models.Identity;
 using CloudPlus.Models.Office365.License;
 using CloudPlus.Models.Office365.Offer;
 using CloudPlus.Models.Office365.User;
+using CloudPlus.Models.Provisions;
 using CloudPlus.Services.Identity.User;
 
 namespace CloudPlus.Services.Database.Office365.User
@@ -240,10 +241,15 @@ namespace CloudPlus.Services.Database.Office365.User
                 var user = users.FirstOrDefault(u => u.Email == item.UserPrincipalName);
                 if (user == null) continue;
 
-                var assignedLicense = item.Licenses.FirstOrDefault();
-
-                user.AssignedLicense = dbProductItems.FirstOrDefault(i =>
-                    i.Identifier == assignedLicense?.Office365Offer.CloudPlusProductIdentifier)?.Name;
+                var assignedLicense = item.Licenses.ToList().Select(x => new AssignedServicesModel() { cloudPlusProductIdentifier = x.Office365Offer.CloudPlusProductIdentifier, offerName = x.Office365Offer.Office365OfferName }).ToList();
+                //item.Licenses.ToList();
+                if(assignedLicense.Count() > 0)
+                {
+                    user.AssignedLicenses = assignedLicense;
+                    user.AssignedLicense = string.Join(", ", assignedLicense.Select(x => x.offerName).ToArray());
+                }
+                //user.AssignedLicense = dbProductItems.FirstOrDefault(i =>
+                //    i.Identifier == assignedLicense.FirstOrDefault()?.Office365Offer.CloudPlusProductIdentifier)?.Name;
 
                 if (item.Office365UserState == Office365UserState.Inactive)
                     users.Remove(user);

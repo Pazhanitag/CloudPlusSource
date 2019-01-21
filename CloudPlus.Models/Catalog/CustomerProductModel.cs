@@ -13,6 +13,6 @@ namespace CloudPlus.Models.Catalog
         public string Img { get; set; }
         public DateTime activatedDate { get; set; }
         public int CategoryId { get; set; }
-        //public 
+        public List<ServiceIdentifier> InCompatibleServices { get; set; }
     }
 }

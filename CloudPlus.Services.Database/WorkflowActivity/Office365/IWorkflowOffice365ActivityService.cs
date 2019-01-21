@@ -12,6 +12,13 @@ namespace CloudPlus.Services.Database.WorkflowActivity.Office365
         bool IsOffice365UserLicenceRemovalInProgress(string userPrincipalName);
         bool IsOffice365UserLicenceRestoreInProgress(string userPrincipalName);
         bool IsOffice365ManageSubscriptionInProgress(string userPrincipalName);
+
+        bool IsOffice365UserLicenceAssignmentForLicenseInProgress(string userPrincipalName, string License);
+        bool IsOffice365UserLicenceChangingForLicenseInProgress(string userPrincipalName, string License);
+        bool IsOffice365UserLicenceRemovalForLicenseInProgress(string userPrincipalName, string License);
+        bool IsOffice365UserLicenceRestoreForLicenseInProgress(string userPrincipalName, string License);
+        bool IsOffice365ManageSubscriptionForLicenseInProgress(string userPrincipalName, string License);
+
         bool IsOffice365UserRolesChangingInProgress(string userPrincipalName);
         bool IsOffice365TransitionInProgress(int companyId);
         bool IsOffice365TransitionStarted(int companyId);

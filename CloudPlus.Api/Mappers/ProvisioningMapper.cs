@@ -17,7 +17,8 @@ namespace CloudPlus.Api.Mappers
                 Name = provisionedService.Name,
                 Status = provisionedService.Status,
                 Vendor = provisionedService.Vendor,
-                AssignedLicense = provisionedService.AssignedLicense
+                AssignedLicense = provisionedService.AssignedLicense,
+                 AssignedLicenses=provisionedService.AssignedLicenses
             };
         }
     }

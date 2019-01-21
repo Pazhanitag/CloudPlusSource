@@ -83,8 +83,7 @@ namespace CloudPlus.Api.Controllers.Office365
         public async Task<IHttpActionResult> AssignedLicenses(string username)
         {
             var license = await _office365DbLicenseService.GetUserAssgnedLicenseAsync(username);
-
-            return Ok(license.ToLicenseViewModel());
+            return Ok(license);
         }
 
         [HttpPost]
