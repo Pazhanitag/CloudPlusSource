@@ -6,15 +6,18 @@ namespace CloudPlus.Api.Mappers
 {
     public static class Office365UserMapper
     {
-        public static dynamic ToManageSubscriptionsAndLicencesCommand(this Office365UserMultiEditViewModel viewModel)
+        public static dynamic ToManageSubscriptionsAndLicencesCommand(this Office365UserMultiAddViewModel viewModel)
         {
             return new
             {
                 viewModel.CompanyId,
-                viewModel.CloudPlusProductIdentifier,
+                viewModel.CloudPlusProductIdentifiers,
                 viewModel.Users,
                 viewModel.UserRoles,
-                MessageType = ManageSubsctiptionAndLicenceCommandType.MultiEditUser
+                viewModel.SecurityGroupName,
+                viewModel.DistributionGroupName,
+                viewModel.Office365GroupName,
+                MessageType = ManageSubsctiptionAndLicenceCommandType.MultiAddUser
             };
         }
         public static dynamic ToManageSubscriptionsAndLicencesCommand(this Office365UserRestoreViewModel viewModel)
@@ -75,5 +78,22 @@ namespace CloudPlus.Api.Mappers
                 viewModel.UserRoles
             };
         }
+
+        //TAG
+        public static dynamic ToManageSubscriptionsAndLicencesCommand(this Office365UserEditViewModel viewModel)
+        {
+            return new
+            {
+                viewModel.CompanyId,
+                viewModel.CloudPlusProductIdentifiers,
+                viewModel.User,
+                viewModel.UserRoles,
+                viewModel.SecurityGroupName,
+                viewModel.DistributionGroupName,
+                viewModel.Office365GroupName,
+                MessageType = ManageSubsctiptionAndLicenceCommandType.EditUser
+            };
+        }
+
     }
 }

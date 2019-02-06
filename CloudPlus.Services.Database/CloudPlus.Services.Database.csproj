@@ -107,6 +107,8 @@
     <Compile Include="Office365\Offer\Office356DbOfferService.cs" />
     <Compile Include="Office365\Subscription\IOffice365DbSubscriptionService.cs" />
     <Compile Include="Office365\Subscription\Office365DbSubscriptionService.cs" />
+    <Compile Include="Office365\UserGroup\IOffice365DbUserGroupService.cs" />
+    <Compile Include="Office365\UserGroup\Office365DbUserGroupService.cs" />
     <Compile Include="Office365\User\IOffice365DbUserService.cs" />
     <Compile Include="Office365\User\Office365DbUserService.cs" />
     <Compile Include="Office365\Utilities\IOffice365DbUtilitiesService.cs" />

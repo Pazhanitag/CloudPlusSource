@@ -108,6 +108,39 @@ using CloudPlus.Workflows.Office365.Activities.User.RemoveUserRoles;
 using CloudPlus.Workflows.Office365.Activities.User.RestorePartnerPlatformUser;
 using CloudPlus.Workflows.Office365.Activities.User.SetImmutableId;
 using CloudPlus.Workflows.Office365.Activities.User.SoftDeleteDatabaseUser;
+using CloudPlus.Workflows.Office365.Activities.Customer.CreateOrderWithMultiItems;
+using CloudPlus.Workflows.Office365.Activities.Customer.UpdateMultiDatabaseSubscription;
+using CloudPlus.Workflows.Office365.Activities.Customer.UpdateMultiDatabaseSubscriptionState;
+using CloudPlus.Workflows.Office365.Activities.Customer.ActivateMultiSuspendedPartnerPlatformSubscription;
+using CloudPlus.Workflows.Office365.Activities.Customer.ActivateMultiSuspendedDatabaseSubscription;
+using CloudPlus.Workflows.Office365.Activities.Customer.UpdateMultiDatabaseSubscriptionQuantity;
+using CloudPlus.Workflows.Office365.Activities.Customer.UpdateMultiPartnerPlatformSubscriptionQuantity;
+using CloudPlus.Workflows.Office365.Activities.Customer.SuspendMultiDatabasesubscription;
+using CloudPlus.Workflows.Office365.Activities.Customer.SuspendMultiPartnerPlatformSubscription;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateSecurityGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseSecurityGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseDistributionGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseDistributionGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseO365Group;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseO365GroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseSecurityGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDistriputionGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDistriputionGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateO365Group;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateO365GroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateSecurityGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseDistributionGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseDistributionGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseO365Group;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseO365GroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseSecurityGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseSecurityGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDistriputionGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDistriputionGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveO365Group;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveO365GroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveSecurityGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveSecurityGroupMember;
 
 namespace CloudPlus.AppServices.Office365.Settings
 {
@@ -257,7 +290,9 @@ namespace CloudPlus.AppServices.Office365.Settings
             builder.RegisterType<MultiPartnerPlatformCustomerSubscriptionActivity>().As<IMultiPartnerPlatformCustomerSubscriptionActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
             builder.RegisterType<DecreasePartnerPlatformCustomerSubscriptionActivity>().As<IDecreasePartnerPlatformCustomerSubscriptionActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
             builder.RegisterType<DatabaseCustomerSubscriptionActivity>().As<IDatabaseCustomerSubscriptionActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+
             builder.RegisterType<MultiDatabaseCustomerSubscriptionActivity>().As<IMultiDatabaseCustomerSubscriptionActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+
             builder.RegisterType<UpdateDatabaseCustomerSubscriptionActivity>().As<IUpdateDatabaseCustomerSubscriptionActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
             builder.RegisterType<DecreaseDatabaseCustomerSubscriptionActivity>().As<IDecreaseDatabaseCustomerSubscriptionActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
 
@@ -294,7 +329,43 @@ namespace CloudPlus.AppServices.Office365.Settings
             builder.RegisterType<UpdatePartnerPlatformSubscriptionQuantityActivity>().As<IUpdatePartnerPlatformSubscriptionQuantityActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
 
             builder.RegisterType<SetImmutableIdActivity>().As<ISetImmutableIdActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
-            
+ 			builder.RegisterType<CreateOrderWithMultiItemsActivity>().As<ICreateOrderWithMultiItemsActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<UpdateMultiDatabaseSubscriptionActivity>().As<IUpdateMultiDatabaseSubscriptionActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<UpdateMultiDatabaseSubscriptionStateActivity>().As<IUpdateMultiDatabaseSubscriptionStateActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<ActivateMultiSuspendedPartnerPlatformSubscriptionActivity>().As<IActivateMultiSuspendedPartnerPlatformSubscriptionActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<ActivateMultiSuspendedDatabaseSubscriptionActivity>().As<IActivateMultiSuspendedDatabaseSubscriptionActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<UpdateMultiDatabaseSubscriptionQuantityActivity>().As<IUpdateMultiDatabaseSubscriptionQuantityActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<UpdateMultiPartnerPlatformSubscriptionQuantityActivity>().As<IUpdateMultiPartnerPlatformSubscriptionQuantityActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<SuspendMultiDatabasesubscriptionActivity>().As<ISuspendMultiDatabasesubscriptionActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<SuspendMultiPartnerPlatformSubscriptionActivity>().As<ISuspendMultiPartnerPlatformSubscriptionActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<CreateSecurityGroupMemberActivity>().As<ICreateSecurityGroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<CreateDatabaseSecurityGroupMemberActivity>().As<ICreateDatabaseSecurityGroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+
+            builder.RegisterType<CreateDatabaseDistributionGroupActivity>().As<ICreateDatabaseDistributionGroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<CreateDatabaseDistributionGroupMemberActivity>().As<ICreateDatabaseDistributionGroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<CreateDatabaseO365GroupActivity>().As<ICreateDatabaseO365GroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<CreateDatabaseO365GroupMemberActivity>().As<ICreateDatabaseO365GroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<CreateDatabaseSecurityGroupActivity>().As<ICreateDatabaseSecurityGroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<CreateDistributionGroupActivity>().As<ICreateDistributionGroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<CreateDistributionGroupMemberActivity>().As<ICreateDistributionGroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<CreateO365GroupActivity>().As<ICreateO365GroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<CreateO365GroupMemberActivity>().As<ICreateO365GroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<CreateSecurityGroupActivity>().As<ICreateSecurityGroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<RemoveDatabaseDistributionGroupActivity>().As<IRemoveDatabaseDistributionGroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<RemoveDatabaseDistributionGroupMemberActivity>().As<IRemoveDatabaseDistributionGroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<RemoveDatabaseO365GroupActivity>().As< IRemoveDatabaseO365GroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+
+            builder.RegisterType<RemoveDatabaseO365GroupMemberActivity>().As<IRemoveDatabaseO365GroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<RemoveDatabaseSecurityGroupActivity>().As<IRemoveDatabaseSecurityGroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<RemoveDatabaseSecurityGroupMemberActivity>().As<IRemoveDatabaseSecurityGroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<RemoveDistriputionGroupActivity>().As<IRemoveDistriputionGroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<RemoveDistriputionGroupMemberActivity>().As<IRemoveDistriputionGroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<RemoveO365GroupActivity>().As<IRemoveO365GroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<RemoveO365GroupMemberActivity>().As<IRemoveO365GroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<RemoveSecurityGroupActivity>().As<IRemoveSecurityGroupActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+            builder.RegisterType<RemoveSecurityGroupMemberActivity>().As<IRemoveSecurityGroupMemberActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger));
+
+
             builder.RegisterType<DatabaseProvisionedStatusProvisionedActivity>().As<IDatabaseProvisionedStatusProvisionedActivity>().EnableInterfaceInterceptors().InterceptedBy(typeof(IActivityInterceptorLogger)); 
         }
     }

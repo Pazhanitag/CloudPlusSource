@@ -27,11 +27,11 @@ namespace CloudPlus.Services.Database.Office365.License
         public async Task<List<Office365OfferModel>> GetUserAssgnedLicenseAsync(string userPrincipalName)
         {
             var license = await _cldpDbContext.Office365Licenses
-                .Include(i => i.Office365Offer).Where(l => l.Office365User.UserPrincipalName == userPrincipalName)
+                .Include(i => i.Office365Offer).Where(l => l.Office365User.UserPrincipalName == userPrincipalName && l.IsDeleted==false)
                 .Select(x=>new Office365OfferModel() { CloudPlusProductIdentifier=x.Office365Offer.CloudPlusProductIdentifier,
                                                          OfferName=x.Office365Offer.Office365OfferName, IsAddon= x.Office365Offer.IsAddon
 
-                }).ToListAsync();
+                }).Distinct().ToListAsync();
             // .FirstOrDefaultAsync(l => l.Office365User.UserPrincipalName == userPrincipalName);
            
             return license;

@@ -89,8 +89,12 @@
     <Compile Include="Metrics\VendorMetrics_Office365_getTeamsUserActivityUserDetail.cs" />
     <Compile Include="Office365InCompatibleService.cs" />
     <Compile Include="Office365OfferAddon.cs" />
+    <Compile Include="Office365\Office365AndDistributionGroupMember.cs" />
+    <Compile Include="Office365\Office365AndDistributionGroups.cs" />
     <Compile Include="Office365\Office365Customer.cs" />
     <Compile Include="Office365\Office365Domain.cs" />
+    <Compile Include="Office365\Office365SecurityGroupMember.cs" />
+    <Compile Include="Office365\Office365SecurityGroups.cs" />
     <Compile Include="Office365\Office365License.cs" />
     <Compile Include="Office365\Office365Offer.cs" />
     <Compile Include="Office365\Office365Subscription.cs" />

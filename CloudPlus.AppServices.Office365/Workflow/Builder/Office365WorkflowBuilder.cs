@@ -55,6 +55,38 @@ using CloudPlus.Workflows.Office365.Activities.User.SetImmutableId;
 using CloudPlus.Workflows.Office365.Activities.User.SoftDeleteDatabaseUser;
 using GreenPipes;
 using System.Collections.Generic;
+using CloudPlus.Workflows.Office365.Activities.Customer.CreateOrderWithMultiItems;
+using CloudPlus.Workflows.Office365.Activities.Customer.UpdateMultiDatabaseSubscription;
+using CloudPlus.Workflows.Office365.Activities.Customer.UpdateMultiDatabaseSubscriptionState;
+using CloudPlus.Workflows.Office365.Activities.Customer.ActivateMultiSuspendedDatabaseSubscription;
+using CloudPlus.Workflows.Office365.Activities.Customer.ActivateMultiSuspendedPartnerPlatformSubscription;
+using CloudPlus.Workflows.Office365.Activities.Customer.UpdateMultiDatabaseSubscriptionQuantity;
+using CloudPlus.Workflows.Office365.Activities.Customer.UpdateMultiPartnerPlatformSubscriptionQuantity;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateSecurityGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseSecurityGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseDistributionGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseDistributionGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseO365Group;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseO365GroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDatabaseSecurityGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDistriputionGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateDistriputionGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateO365Group;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateO365GroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.CreateSecurityGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseDistributionGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseDistributionGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseO365Group;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseO365GroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseSecurityGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDatabaseSecurityGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDistriputionGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveDistriputionGroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveO365Group;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveO365GroupMember;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveSecurityGroup;
+using CloudPlus.Workflows.Office365.Activities.UserGroup.RemoveSecurityGroupMember;
+
 
 namespace CloudPlus.AppServices.Office365.Workflow.Builder
 {
@@ -214,7 +246,7 @@ namespace CloudPlus.AppServices.Office365.Workflow.Builder
                     executeConfigurator =>
                     {
                         executeConfigurator.UseConcurrencyLimit(1);
-                        
+
                     });
 
             _activityConfigurator
@@ -222,8 +254,8 @@ namespace CloudPlus.AppServices.Office365.Workflow.Builder
                     busFactoryConfigurator, host, new LifetimeScope(componentRegistry),
                     executeConfigurator =>
                     {
-                        executeConfigurator.UseConcurrencyLimit(1); 
-                        
+                        executeConfigurator.UseConcurrencyLimit(1);
+
                     });
 
             _activityConfigurator.ConfigureExecuteActivity<ISetImmutableIdActivity, SetImmutableIdArguments>(
@@ -268,6 +300,133 @@ namespace CloudPlus.AppServices.Office365.Workflow.Builder
                 .ConfigureExecuteActivity<ITransitionDispatchCreatingUsersActivity,
                     ITransitionDispatchCreatingUsersArguments>(busFactoryConfigurator, host,
                     new LifetimeScope(componentRegistry));
+            _activityConfigurator
+               .ConfigureExecuteActivity<ICreateOrderWithMultiItemsActivity,
+                   ICreateOrderWithMultiItemsArguments>(busFactoryConfigurator, host,
+                   new LifetimeScope(componentRegistry));
+            _activityConfigurator
+              .ConfigureExecuteActivity<IUpdateMultiDatabaseSubscriptionActivity,
+                  IUpdateMultiDatabaseSubscriptionArguments>(busFactoryConfigurator, host,
+                  new LifetimeScope(componentRegistry));
+            _activityConfigurator
+              .ConfigureExecuteActivity<IUpdateMultiDatabaseSubscriptionStateActivity,
+                  IUpdateMultiDatabaseSubscriptionStateArguments>(busFactoryConfigurator, host,
+                  new LifetimeScope(componentRegistry));
+            _activityConfigurator
+  .ConfigureExecuteActivity<IActivateMultiSuspendedDatabaseSubscriptionActivity,
+      IActivateMultiSuspendedDatabaseSubscriptionArguments>(busFactoryConfigurator, host,
+      new LifetimeScope(componentRegistry));
+            _activityConfigurator
+  .ConfigureExecuteActivity<IActivateMultiSuspendedPartnerPlatformSubscriptionActivity,
+      IActivateMultiSuspendedPartnerPlatformSubscriptionArguments>(busFactoryConfigurator, host,
+      new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IUpdateMultiDatabaseSubscriptionQuantityActivity,
+IUpdateMultiDatabaseSubscriptionQuantityArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IUpdateMultiPartnerPlatformSubscriptionQuantityActivity,
+IUpdateMultiPartnerPlatformSubscriptionQuantityArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateSecurityGroupMemberActivity,
+ICreateSecurityGroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateDatabaseSecurityGroupMemberActivity,
+ICreateDatabaseSecurityGroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateDatabaseDistributionGroupActivity,
+ICreateDatabaseDistributionGroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateDatabaseDistributionGroupMemberActivity,
+ICreateDatabaseDistributionGroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateDatabaseO365GroupActivity,
+ICreateDatabaseO365GroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateDatabaseO365GroupMemberActivity,
+ICreateDatabaseO365GroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateDatabaseSecurityGroupActivity,
+ICreateDatabaseSecurityGroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateDistributionGroupActivity,
+ICreateDistributionGroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateDistributionGroupMemberActivity,
+ICreateDistributionGroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateO365GroupActivity,
+ICreateO365GroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateO365GroupMemberActivity,
+ICreateO365GroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<ICreateSecurityGroupActivity,
+ICreateSecurityGroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+
+            _activityConfigurator
+.ConfigureExecuteActivity<RemoveDatabaseDistributionGroupActivity,
+IRemoveDatabaseDistributionGroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IRemoveDatabaseDistributionGroupMemberActivity,
+IRemoveDatabaseDistributionGroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IRemoveDatabaseO365GroupActivity,
+IRemoveDatabaseO365GroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IRemoveDatabaseO365GroupMemberActivity,
+IRemoveDatabaseO365GroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IRemoveDatabaseSecurityGroupActivity,
+IRemoveDatabaseSecurityGroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IRemoveDistriputionGroupMemberActivity,
+IRemoveDistriputionGroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IRemoveO365GroupActivity,
+IRemoveO365GroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IRemoveO365GroupMemberActivity,
+IRemoveO365GroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IRemoveSecurityGroupActivity,
+IRemoveSecurityGroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IRemoveSecurityGroupMemberActivity,
+IRemoveSecurityGroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IRemoveDatabaseSecurityGroupMemberActivity,
+IRemoveDatabaseSecurityGroupMemberArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+            _activityConfigurator
+.ConfigureExecuteActivity<IRemoveDistriputionGroupActivity,
+IRemoveDistriputionGroupArguments>(busFactoryConfigurator, host,
+new LifetimeScope(componentRegistry));
+
         }
     }
 }

@@ -192,6 +192,121 @@ namespace CloudPlus.Services.Database.Office365.Api
                 throw new ArgumentNullException($"Domain and Office365CustomerId cannot be null: Domain {model.Domain}, Office365CustomerId: {model.Office365CustomerId}");
         }
 
+        public async Task CreateSecurityGroupAsync(Office365ApiSecurtyGroupModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.CreateSecurityGroup"), model);
+        }
+
+        public async Task CreateDistriputionGroupAsync(Office365ApiDistributionGroupModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.CreateDistriputionGroup"), model);
+        }
+
+        public async Task CreateOffice365GroupAsync(Office365ApiDistributionGroupModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.CreateOffice365Group"), model);
+        }
+
+        public async Task AddSecurityGroupMembersAsync(Office365ApiSecurityGroupMemberModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.AddSecurityGroupMember"), model);
+        }
+
+        public async Task AddDistriputionGroupMembersAsync(Office365ApiDistributionGroupMembersModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.AddDistriputionGroupMember"), model);
+        }
+
+        public async Task AddOffice365GroupMembersAsync(Office365ApiDistributionGroupMembersModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.AddOffice365GroupMember"), model);
+        }
+
+        public async Task RemoveSecurityGroupAsync(Office365ApiSecurtyGroupModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.RemoveSecurityGroup"), model);
+        }
+
+        public async Task RemoveDistriputionGroupAsync(Office365ApiRemoveDistributionGroupModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.RemoveDistriputionGroup"), model);
+        }
+
+        public async Task RemoveOffice365GroupAsync(Office365ApiRemoveDistributionGroupModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.RemoveOffice365Group"), model);
+        }
+
+        public async Task RemoveSecurityGroupMembersAsync(Office365ApiSecurityGroupMemberModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.RemoveSecurityGroupMember"), model);
+        }
+
+        public async Task RemoveDistriputionGroupMembersAsync(Office365ApiDistributionGroupMembersModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.RemoveDistriputionGroupMember"), model);
+        }
+
+        public async Task RemoveOffice365GroupMembersAsync(Office365ApiDistributionGroupMembersModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
+
+            await TryExecutePost(_configurationManager.GetByKey("Office365Api.RemoveOffice365GroupMember"), model);
+        }
+
+        public async Task<string> GetAllGroupsAsync(IOffice365CustomerDomainModel model)
+        {
+
+            var response = await TryExecutePost(_configurationManager.GetByKey("Office365Api.GetAllGroups"), model);
+
+            var groups = await response.Content.ReadAsAsync<HttpResponse>();
+
+            return Convert.ToString(groups.Result);
+        }
+
+        public async Task<string> GetUserGroupMemberAsync(IOffice365CustomerDomainModel model)
+        {
+            var response = await TryExecutePost(_configurationManager.GetByKey("Office365Api.GetUserGroupMember"), model);
+
+            var groups = await response.Content.ReadAsAsync<HttpResponse>();
+
+            return Convert.ToString(groups.Result);
+        }
+
         private async Task<HttpResponseMessage> TryExecutePost(string endpoint, object model)
         {
             var attemptsCount = 1;

@@ -59,6 +59,7 @@
     <Compile Include="Office365\Domain\Federate\IOffice365FederateDomainResponse.cs" />
     <Compile Include="Office365\Domain\Federate\Office365FederateDomainRequest.cs" />
     <Compile Include="Office365\Domain\Federate\Office365FederateDomainResponse.cs" />
+    <Compile Include="Office365\Subscriptions\Commands\IManageMultiSubscriptionsAndLicencesCommand.cs" />
     <Compile Include="Office365\Subscriptions\Commands\IManageSubscriptionsAndLicenceCommand.cs" />
     <Compile Include="Office365\Transition\Commands\IOffice365TransitionCommand.cs" />
     <Compile Include="Office365\Transition\Commands\IOffice365TransitionReportCommand.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Office365\User\Office365GetUserRolesResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\Commands\IChangeUserPasswordCommand.cs" />
+    <Compile Include="Office365\User\ICreateSecurityGroupCommand.cs" />
     <Compile Include="Users\Commands\IDeleteUserCommand.cs" />
     <Compile Include="Office365\User\Commands\IOffice365UserMultiEditCommand.cs" />
     <Compile Include="Users\Commands\IUpdateUserCommand.cs" />

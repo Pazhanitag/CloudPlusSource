@@ -31,75 +31,80 @@ namespace CloudPlus.AppServices.Office365.Consumers.Subscription
         {
             var messages = context.Message;
             string productIdentifier;
-
-            if (string.IsNullOrWhiteSpace(messages.CloudPlusProductIdentifier) 
-                && messages.UserRoles != null && messages.UserRoles.Any() 
-                && messages.Users != null && messages.Users.Any())
+            if (messages.MessageType == ManageSubsctiptionAndLicenceCommandType.MultiAddUser)
             {
-                foreach (var office365User in messages.Users)
-                {
-                    var o365User =
-                        await _office365DbUserService.GetOffice365DatabaseUserAsync(office365User.UserPrincipalName);
-
-                    if (o365User != null)
-                    {
-                        await context.Send<IOffice365UserChangeRolesCommand>(Office365ServiceConstants.QueueOffice365ChangeUserRolesUri, new
-                        {
-                            messages.CompanyId,
-                            office365User.UserPrincipalName,
-                            messages.UserRoles
-                        });
-                    }
-                    else
-                    {
-                        await context.Send<IOffice365UserCreateCommand>(
-                            Office365ServiceConstants.QueueOffice365CreateUserUri, new
-                            {
-                                messages.CompanyId,
-                                office365User.UserPrincipalName,
-                                office365User.Password,
-                                UsageLocation = "US",
-                                messages.UserRoles
-                            });
-                    }
-                    // Send assign roles
-                }
-                return;
-            }
-            if (messages.MessageType == ManageSubsctiptionAndLicenceCommandType.RemoveLicence ||
-                messages.MessageType == ManageSubsctiptionAndLicenceCommandType.RestoreUser ||
-                messages.MessageType == ManageSubsctiptionAndLicenceCommandType.HardDeleteUser)
-            {
-                var o365User =
-                    await _office365DbUserService.GetOffice365DatabaseUserAsync(messages.Users.FirstOrDefault()
-                        .UserPrincipalName);
+               
+                    await _manageSubscriptionWorkflow.Execute(context);
               
-                productIdentifier = o365User.Licenses.FirstOrDefault()?.Office365Offer.CloudPlusProductIdentifier;
             }
-            else
-            {
-                productIdentifier = messages.CloudPlusProductIdentifier;
-            }
+            //if (string.IsNullOrWhiteSpace(messages.CloudPlusProductIdentifiers.FirstOrDefault()) 
+            //    && messages.UserRoles != null && messages.UserRoles.Any() 
+            //    && messages.Users != null && messages.Users.Any())
+            //{
+            //    foreach (var office365User in messages.Users)
+            //    {
+            //        var o365User =
+            //            await _office365DbUserService.GetOffice365DatabaseUserAsync(office365User.UserPrincipalName);
 
-            var office365Customer = await _office365DbCustomerService.GetOffice365CustomerAsync(messages.CompanyId);
+            //        if (o365User != null)
+            //        {
+            //            await context.Send<IOffice365UserChangeRolesCommand>(Office365ServiceConstants.QueueOffice365ChangeUserRolesUri, new
+            //            {
+            //                messages.CompanyId,
+            //                office365User.UserPrincipalName,
+            //                messages.UserRoles
+            //            });
+            //        }
+            //        else
+            //        {
+            //            await context.Send<IOffice365UserCreateCommand>(
+            //                Office365ServiceConstants.QueueOffice365CreateUserUri, new
+            //                {
+            //                    messages.CompanyId,
+            //                    office365User.UserPrincipalName,
+            //                    office365User.Password,
+            //                    UsageLocation = "US",
+            //                    messages.UserRoles
+            //                });
+            //        }
+            //        // Send assign roles
+            //    }
+            //    return;
+            //}
+            //            if (messages.MessageType == ManageSubsctiptionAndLicenceCommandType.RemoveLicence ||
+            //                messages.MessageType == ManageSubsctiptionAndLicenceCommandType.RestoreUser ||
+            //                messages.MessageType == ManageSubsctiptionAndLicenceCommandType.HardDeleteUser)
+            //            {
+            //                var o365User =
+            //                    await _office365DbUserService.GetOffice365DatabaseUserAsync(messages.Users.FirstOrDefault()
+            //                        .UserPrincipalName);
 
-            var subscription = await _office365DbSubscriptionService.GetSubscriptionByProductIdentifierAsync(
-                office365Customer.Office365CustomerId, productIdentifier);
+            //                productIdentifier = o365User.Licenses.FirstOrDefault()?.Office365Offer.CloudPlusProductIdentifier;
+            //            }
+            //            else
+            //            {
+            //                productIdentifier = messages.CloudPlusProductIdentifiers.FirstOrDefault();
+            //            }
 
-            if (subscription == null || subscription.SubscriptionState != Office365SubscriptionState.OperationInProgress)
-            {
-                 await _manageSubscriptionWorkflow.Execute(context);
-            }
-            else
-            {
-                
-                if (context.GetRetryAttempt() < 100) // ????
-                {
-#pragma warning disable 4014
-                    context.Redeliver(TimeSpan.FromSeconds(15));
-#pragma warning restore 4014
-                }
-            }
+            //            var office365Customer = await _office365DbCustomerService.GetOffice365CustomerAsync(messages.CompanyId);
+
+            //            var subscription = await _office365DbSubscriptionService.GetSubscriptionByProductIdentifierAsync(
+            //                office365Customer.Office365CustomerId, productIdentifier);
+
+            //            if (subscription == null || subscription.SubscriptionState != Office365SubscriptionState.OperationInProgress)
+            //            {
+            //                 await _manageSubscriptionWorkflow.Execute(context);
+            //            }
+            //            else
+            //            {
+
+            //                if (context.GetRetryAttempt() < 100) // ????
+            //                {
+            //#pragma warning disable 4014
+            //                    context.Redeliver(TimeSpan.FromSeconds(15));
+            //#pragma warning restore 4014
+            //                }
+            //            }
         }
     }
 }

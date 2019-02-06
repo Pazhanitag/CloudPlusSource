@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -46,6 +47,34 @@ namespace CloudPlus.Services.Database.Office365.Subscription
             };
         }
 
+        //TAG
+        public async Task<List<Office365SubscriptionModel>> GetSubscriptionListAsyc(List<string> office365SubscriptionId)
+        {
+            var subscriptions = await _dbContext.Office365Subscriptions
+                .Include(o => o.Office365Offer)
+                .Include(c => c.Office365Customer)
+                .Where(s => office365SubscriptionId.Any(o => o.Contains(s.Office365SubscriptionId))).ToListAsync();
+
+            if (subscriptions == null || subscriptions.Count == 0) return null;
+
+            return subscriptions.Select(x => new Office365SubscriptionModel
+            {
+                Office365CustomerId = x.Office365Customer.Office365Id,
+                Office365SubscriptionId = x.Office365SubscriptionId,
+                Office365OrderId = x.Office365OrderId,
+                Office365FriendlyName = x.Office365FriendlyName,
+                Quantity = x.Quantity,
+                Office365Offer = new Office365OfferModel
+                {
+                    Id = x.Office365Offer.Id,
+                    Office365Id = x.Office365Offer.Office365OfferId,
+                    OfferName = x.Office365Offer.Office365OfferName,
+                    Sku = x.Office365Offer.Office365ProductSku,
+                    CloudPlusProductIdentifier = x.Office365Offer.CloudPlusProductIdentifier
+                }
+            }).ToList();
+        }
+
         public async Task<Office365SubscriptionModel> GetSubscriptionByProductIdentifierAsync(
             string office365CustomerId, string cloudplusProductIdentifier)
         {
@@ -75,6 +104,38 @@ namespace CloudPlus.Services.Database.Office365.Subscription
                 },
                 Suspended = subscription.Suspended
             };
+        }
+
+        //TAG
+        public async Task<List<Office365SubscriptionModel>> GetSubscriptionsByProductIdentifiersAsync(
+            string office365CustomerId, IEnumerable<string> cloudplusProductIdentifiers)
+        {
+            var subscription = await _dbContext.Office365Subscriptions
+                .Include(o => o.Office365Offer)
+                .Include(c => c.Office365Customer).AsNoTracking()
+                .Where(s => s.Office365Customer.Office365Id == office365CustomerId &&
+                                           cloudplusProductIdentifiers.Contains(s.Office365Offer.CloudPlusProductIdentifier)).ToListAsync();
+
+            if (subscription == null) return null;
+
+            return subscription.Select(s => new Office365SubscriptionModel
+            {
+                Office365CustomerId = s.Office365Customer.Office365Id,
+                Office365SubscriptionId = s.Office365SubscriptionId,
+                Office365OrderId = s.Office365OrderId,
+                Office365FriendlyName = s.Office365FriendlyName,
+                Quantity = s.Quantity,
+                SubscriptionState = s.SubscriptionState,
+                Office365Offer = new Office365OfferModel
+                {
+                    Id = s.Office365Offer.Id,
+                    Office365Id = s.Office365Offer.Office365OfferId,
+                    OfferName = s.Office365Offer.Office365OfferName,
+                    Sku = s.Office365Offer.Office365ProductSku,
+                    CloudPlusProductIdentifier = s.Office365Offer.CloudPlusProductIdentifier
+                },
+                Suspended = s.Suspended
+            }).ToList();
         }
 
         public async Task<Office365SubscriptionModel> CreateSubscription(Office365SubscriptionModel model)
@@ -191,6 +252,36 @@ namespace CloudPlus.Services.Database.Office365.Subscription
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task DeleteSubscriptionList(List<string> office365SubscriptionIds)
+        {
+            var subscriptions = await GetSubscriptionListEntity(office365SubscriptionIds);
+
+            _dbContext.Office365Subscriptions.RemoveRange(subscriptions);
+
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task SuspendSubscriptionList(List<string> office365SubscriptionIds)
+        {
+            var subscriptions = await GetSubscriptionListEntity(office365SubscriptionIds);
+
+            if (subscriptions == null || subscriptions.Count == 0)
+                throw new Exception($"Supscription office36id {string.Join(",", office365SubscriptionIds)} does not exist");
+            subscriptions.ForEach(x => { x.Suspended = true; x.Quantity = 1; });
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task UnsuspendSubscriptionList(List<string> office365SubscriptionIds)
+        {
+            var subscriptions = await GetSubscriptionListEntity(office365SubscriptionIds);
+
+            if (subscriptions == null || subscriptions.Count == 0)
+                throw new Exception($"Subscriptions office36id {string.Join(",", office365SubscriptionIds)} does not exist");
+
+            subscriptions.ForEach(x => { x.Suspended = false; });
+            await _dbContext.SaveChangesAsync();
+        }
+
         public async Task DeleteSubscriptionByProductIdentifierAsync(
             string office365CustomerId, string cloudplusProductIdentifier)
         {
@@ -218,6 +309,19 @@ namespace CloudPlus.Services.Database.Office365.Subscription
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task UpdateMultiDatabseSubscriptionState(Office365SubscriptionState subscriptionState, List<string> office365SubscriptionIds)
+        {
+            var subscriptions = await _dbContext.Office365Subscriptions
+                .Where(s => office365SubscriptionIds.Any(x => x == s.Office365SubscriptionId)).ToListAsync();
+
+            if (subscriptions == null || subscriptions.Count == 0)
+                throw new NullReferenceException($"Could not change subscription state to {subscriptionState} because subscription {string.Join(",", office365SubscriptionIds)} was not found");
+
+            subscriptions.ForEach(x => x.SubscriptionState = subscriptionState);
+
+            await _dbContext.SaveChangesAsync();
+        }
+
         public async Task UpdateSubscriptionQuantity(string office365SubscriptionId, int quantityChange)
         {
             var subscription = await _dbContext.Office365Subscriptions
@@ -239,6 +343,17 @@ namespace CloudPlus.Services.Database.Office365.Subscription
                 throw new ArgumentException($"No Office 365 Subscription with subscription Id: {office365SubscriptionId}");
 
             return subscription;
+        }
+
+        private async Task<List<Office365Subscription>> GetSubscriptionListEntity(List<string> office365SubscriptionIds)
+        {
+            var subscriptions = await _dbContext.Office365Subscriptions
+                .Where(s => office365SubscriptionIds.Any(o => o.Contains(s.Office365SubscriptionId))).ToListAsync();
+
+            if (subscriptions == null || subscriptions.Count == 0)
+                throw new ArgumentException($"No Office 365 Subscription with subscription Id: {string.Join(",", office365SubscriptionIds)}");
+
+            return subscriptions;
         }
     }
 }

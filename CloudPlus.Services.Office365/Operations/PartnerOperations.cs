@@ -17,6 +17,33 @@ namespace CloudPlus.Services.Office365.Operations
             _office365ServiceSettings = office365ServiceSettings;
         }
 
+        //public IAggregatePartner UserPartnerOperations
+        //{
+        //    get
+        //    {
+        //        if (_userPartnerOperations != null)
+        //            return _userPartnerOperations;
+
+        //        var aadAuthenticationResult = LoginUserToAad();
+
+        //        var userCredentials = PartnerCredentials.Instance.GenerateByUserCredentials(
+        //            _office365ServiceSettings.ApplicationId,
+        //            new AuthenticationToken(
+        //                aadAuthenticationResult.AccessToken,
+        //                aadAuthenticationResult.ExpiresOn),
+        //            delegate
+        //            {
+        //                var aadToken = LoginUserToAad();
+
+        //                return Task.FromResult(new AuthenticationToken(aadToken.AccessToken, aadToken.ExpiresOn));
+        //            });
+
+        //        _userPartnerOperations = PartnerService.Instance.CreatePartnerOperations(userCredentials);
+
+        //        return _userPartnerOperations;
+        //    }
+        //}
+
         public IAggregatePartner UserPartnerOperations
         {
             get
@@ -24,26 +51,42 @@ namespace CloudPlus.Services.Office365.Operations
                 if (_userPartnerOperations != null)
                     return _userPartnerOperations;
 
-                var aadAuthenticationResult = LoginUserToAad();
+                #region "App + User Authenication"
 
-                var userCredentials = PartnerCredentials.Instance.GenerateByUserCredentials(
-                    _office365ServiceSettings.ApplicationId,
-                    new AuthenticationToken(
-                        aadAuthenticationResult.AccessToken,
-                        aadAuthenticationResult.ExpiresOn),
-                    delegate
-                    {
-                        var aadToken = LoginUserToAad();
+                // Commented out this code, as this approach requires MFA /
 
-                        return Task.FromResult(new AuthenticationToken(aadToken.AccessToken, aadToken.ExpiresOn));
-                    });
+                //var aadAuthenticationResult = LoginUserToAad();
 
-                _userPartnerOperations = PartnerService.Instance.CreatePartnerOperations(userCredentials);
+                //var userCredentials = PartnerCredentials.Instance.GenerateByUserCredentials(
+                //    _office365ServiceSettings.ApplicationId,
+                //    new AuthenticationToken(
+                //        aadAuthenticationResult.AccessToken,
+                //        aadAuthenticationResult.ExpiresOn),
+                //    delegate
+                //    {
+                //        var aadToken = LoginUserToAad();
+
+                //        return Task.FromResult(new AuthenticationToken(aadToken.AccessToken, aadToken.ExpiresOn));
+                //    });
+
+                //_userPartnerOperations = PartnerService.Instance.CreatePartnerOperations(userCredentials);
+
+                #endregion
+
+                #region "App only authenication"
+
+                IPartnerCredentials partnerCredentials = PartnerCredentials.Instance.GenerateByApplicationCredentials(
+                                                        _office365ServiceSettings.ApplicationId,
+                                                        _office365ServiceSettings.ApplicationSecret,
+                                                        _office365ServiceSettings.Domain);
+
+                _userPartnerOperations = PartnerService.Instance.CreatePartnerOperations(partnerCredentials);
+
+                #endregion
 
                 return _userPartnerOperations;
             }
         }
-
         private AuthenticationResult LoginUserToAad()
         {
             var addAuthority = new UriBuilder(_office365ServiceSettings.AuthenticationAuthorityEndpoint)
@@ -62,5 +105,7 @@ namespace CloudPlus.Services.Office365.Operations
                 _office365ServiceSettings.ApplicationId,
                 userCredentials);
         }
+
+
     }
 }

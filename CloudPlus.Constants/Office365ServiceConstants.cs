@@ -8,7 +8,11 @@ namespace CloudPlus.Constants
         public static string CompensateSuffix = "compensate";
 
         // Events
-        public static string QueueOffice365RoutingSlipEventRoute = "office365-service-routing-slip-event-observer";
+
+        public static string RoutingSlipEventObserverRoute = "office365-service-routing-slip-event-observer";
+        public static Uri RoutingSlipEventObserverUri = new Uri($"{RabbitMqUri}{RoutingSlipEventObserverRoute}");
+
+        public static string QueueOffice365RoutingSlipEventRoute = "queue-office365-service-routing-slip-event-observer";
         public static Uri QueueOffice365RoutingSlipEventUri = new Uri($"{RabbitMqUri}{QueueOffice365RoutingSlipEventRoute}");
 
         public static string QueueOffice365RoutingSlipStartedRoute = "office365-service-routing-slip-started";
@@ -91,6 +95,7 @@ namespace CloudPlus.Constants
         public static Uri QueueOffice365UserRestoreUri => new Uri($"{RabbitMqUri}{QueueOffice365UserRestore}");
 
         public static string QueueOffice3655UserMultiEdit = "office365-user-multi-edit-flow";
+        public static Uri Office3655UserMultiEditUri => new Uri($"{RabbitMqUri}{QueueOffice3655UserMultiEdit}");
         public static string QueueOffice365UserChangeLicense = "office365-user-change-license-flow";
         public static Uri Office365UserChangeLicenseUri => new Uri($"{RabbitMqUri}{QueueOffice365UserChangeLicense}");
         public static string QueueOffice365GetUserRoles = "office-365-get-user-roles";

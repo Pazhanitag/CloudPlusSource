@@ -59,5 +59,25 @@ namespace CloudPlus.Constants
 	    public static string CompensateDeleteIsUserRoute = $"{ActivityDeleteIsUserRoute}-{CompensateSuffix}";
 		public static Uri CompensateDeleteAdUserUri => new Uri($"{RabbitMqUri}{CompensateDeleteAdUserRoute}");
 	    public static Uri CompensateDeleteIsUserUri => new Uri($"{RabbitMqUri}{CompensateDeleteIsUserRoute}");
-	}
+
+        //Groups
+        public static string QueueCreateSecurityGroup = "create-security-group-flow";
+        public static Uri QueueCreateSecurityGroupUri => new Uri($"{RabbitMqUri}{QueueCreateSecurityGroup}");
+
+        public static string QueueCreateDistributionGroup = "create-distribution-group-flow";
+        public static Uri QueueCreateDistributionGroupUri => new Uri($"{RabbitMqUri}{QueueCreateDistributionGroup}");
+
+        public static string QueueCreateOffice365Group = "create-office365-group-flow";
+        public static Uri QueueCreateOffice365GroupUri => new Uri($"{RabbitMqUri}{QueueCreateOffice365Group}");
+
+        public static string QueueRemoveSecurityGroup = "delete-security-group-flow";
+        public static Uri QueueRemoveSecurityGroupUri => new Uri($"{RabbitMqUri}{QueueRemoveSecurityGroup}");
+
+        public static string QueueRemoveDistributionGroup = "delete-distribution-group-flow";
+        public static Uri QueueRemoveDistributionGroupUri => new Uri($"{RabbitMqUri}{QueueRemoveDistributionGroup}");
+
+        public static string QueueRemoveOffice365Group = "delete-office365-group-flow";
+        public static Uri QueueRemoveOffice365GroupUri => new Uri($"{RabbitMqUri}{QueueRemoveOffice365Group}");
+
+    }
 }

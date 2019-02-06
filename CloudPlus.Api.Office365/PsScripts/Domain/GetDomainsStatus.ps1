@@ -22,8 +22,10 @@ param($AdminUsername,$AdminPassword,$SQLServerIP,$SQLServerUsername,$SQLServerPa
 #$ScriptPath = Split-Path $MyInvocation.MyCommand.Path -Parent
 
 #TODO
-$AuthDBConnectionString = "server=192.168.73.156;initial catalog=CloudPlusAuth;trusted_connection=yes;MultipleActiveResultSets=true;App=EntityFramework"
-$CPDBConnectionString = "data source=192.168.73.156;initial catalog=CloudPlusDb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"
+#$AuthDBConnectionString = "server=192.168.73.156;initial catalog=CloudPlusAuth;trusted_connection=yes;MultipleActiveResultSets=true;App=EntityFramework"
+#$CPDBConnectionString = "data source=192.168.73.156;initial catalog=CloudPlusDb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"
+$AuthDBConnectionString = "server=VMROOT002STG4.cloudplusservices.stg;initial catalog=CloudPlusAuth;database=CloudPlusAuth;User Id=cloudplusv2; password=DhK6t7D49mVXjM3r;trusted_connection=yes;MultipleActiveResultSets=true;App=EntityFramework"
+$CPDBConnectionString = "data source=VMROOT002STG4.cloudplusservices.stg;initial catalog=CloudPlusDb;integrated security=True;database=CloudPlusAuth;User Id=cloudplusv2; password=DhK6t7D49mVXjM3r;MultipleActiveResultSets=True;App=EntityFramework"
 
 #$AuthDBConnectionString = "Server=$SQLServerIP;Database=$AuthDBName;User Id=$SQLServerUsername;Password=$SQLServerPassword"
 #$CPDBConnectionString = "Server=$SQLServerIP;Database=$CPDBName;User Id=$SQLServerUsername;Password=$SQLServerPassword"

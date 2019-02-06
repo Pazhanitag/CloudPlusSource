@@ -231,7 +231,7 @@ namespace CloudPlus.Services.Database.Office365.User
             var office365Customer = await _dbContext.Office365Customers.FirstOrDefaultAsync(u => u.CompanyId == companyId);
 
             var office365Users = await _dbContext.Office365Users
-                .Include(i => i.Licenses.Select(o => o.Office365Offer))
+                .Include(i => i.Licenses.Where(o=>o.IsDeleted == false).Select(o => o.Office365Offer))
                 .Where(u => u.CustomerId == office365Customer.Id).ToListAsync();
 
             var dbProductItems = _dbContext.ProductItems.ToList();

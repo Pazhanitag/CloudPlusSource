@@ -53,6 +53,20 @@
 
         Office365TransitionDispatchCreatingUsers,
         Office365DatabaseProvisionedStatusProvisioned,
+
+
+        Office365CreateSecurityGroup,
+        Office365AddDistributionGroupMember,
+        Office365AddSecurityGroupMember,
+        Office365CreateDistributionGroup,
+        Office365CreateO365Group,
+        Office365RemoveDistributionGroup,
+        Office365RemoveDistributionGroupMember,
+        Office365RemoveO365Group,
+        Office365RemoveO365GroupMember,
+        Office365RemoveSecurityGroup,
+        Office365RemoveSecurityGroupMember,
+        Office365AddO365GroupMember,
         #endregion
 
         Error

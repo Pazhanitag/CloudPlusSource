@@ -169,11 +169,26 @@ namespace CloudPlus.Api.Controllers.Office365
         [ValidateModel]
         [AuthorizeAccess(PermissionsConstants.ViewProductCatalog)]
         [Route("MultiEdit", Name = "MultiEdit")]
-        public async Task<IHttpActionResult> MultiEdit([FromBody]Office365UserMultiEditViewModel model)
+        public async Task<IHttpActionResult> MultiEdit([FromBody]Office365UserMultiAddViewModel model)
         {
-            var office365UserMultiEdit = Office365ServiceConstants.QueueManageSubscriptionsAndLicences;
+            var office365UserMultiEdit = Office365ServiceConstants.QueueOffice3655UserMultiEdit;
 
             await _messageBroker.GetSendEndpoint(office365UserMultiEdit)
+                .Send<IManageSubscriptionsAndLicencesCommand>(model.ToManageSubscriptionsAndLicencesCommand());
+
+            return Ok();
+        }
+
+
+        [HttpPost]
+        [ValidateModel]
+        [AuthorizeAccess(PermissionsConstants.ViewProductCatalog)]
+        [Route("EditUser", Name = "EditUser")]
+        public async Task<IHttpActionResult> EditUser([FromBody]Office365UserEditViewModel model)
+        {
+            var office365EditUser = Office365ServiceConstants.QueueManageSubscriptionsAndLicences;
+
+            await _messageBroker.GetSendEndpoint(office365EditUser)
                 .Send<IManageSubscriptionsAndLicencesCommand>(model.ToManageSubscriptionsAndLicencesCommand());
 
             return Ok();

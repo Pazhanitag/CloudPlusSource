@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MassTransit.Courier;
 using CloudPlus.Logging;
 using CloudPlus.Services.Database.Office365.Subscription;
+using System.Collections.Generic;
 
 namespace CloudPlus.Workflows.Office365.Activities.Customer.MultiDatabaseCustomerSubscription
 {
@@ -19,14 +20,25 @@ namespace CloudPlus.Workflows.Office365.Activities.Customer.MultiDatabaseCustome
         {
             var arguments = context.Arguments;
 
-            foreach (var subscription in arguments.Subscriptions)
+            var Subscriptions = new List<Models.Office365.Subscription.Office365SubscriptionModel>();
+            
+            foreach (var CloudPlusProductIdentifier in arguments.CloudPlusProductIdentifiers)
             {
-                await _office365DbSubscriptionService.CreateSubscription(subscription);
+                var model = new Models.Office365.Subscription.Office365SubscriptionModel
+                {
+                    Office365CustomerId = arguments.Office365CustomerId,
+                    Office365FriendlyName = string.Empty,
+                    Office365Offer = new Models.Office365.Offer.Office365OfferModel { CloudPlusProductIdentifier = CloudPlusProductIdentifier.Key },
+                    Quantity = CloudPlusProductIdentifier.Value,
+                    SubscriptionState = Enums.Office365.Office365SubscriptionState.OperationInProgress
+                };
+                await _office365DbSubscriptionService.CreateSubscription(model);
+                Subscriptions.Add(model);
             }
 
             return context.Completed(new MultiDatabaseCustomerSubscriptionLog
             {
-                Subscriptions = arguments.Subscriptions
+                Subscriptions = Subscriptions
             });
         }
 

@@ -70,6 +70,23 @@ namespace CloudPlus.Services.Office365.Subscription
                 Quantity = placedOrder.Quantity
             };
         }
+        //TAG
+        public async Task<Office365OrderSubscriptionModel> CreateMultiPartnerPlatformSubscriptionsAsync(Office365OrderWithDetailsModel office365OrderModel)
+        {
+            var placedOrder = await _office365OrderService.CreateOrderWithMultiItemsAsync(office365OrderModel);
+            return new Office365OrderSubscriptionModel()
+            {
+                OrderId = placedOrder.OrderId,
+                office365SubscriptionModels = placedOrder.Office365OrderDetailsModels.Select(x => new Office365SubscriptionModel
+                {
+                    Office365CustomerId = placedOrder.Office365CustomerId,
+                    Office365SubscriptionId = x.SubscriptionId,
+                    Office365OrderId = placedOrder.OrderId,
+                    Office365FriendlyName = x.FriendlyName,
+                    Quantity = x.Quantity
+                }).ToList()
+            };
+        }
 
         public async Task<Office365SubscriptionModel> ActivateSuspendedPartnerPlatformSubscriptionAsync(string office365CustomerId, string office365SubscriptionId)
         {
@@ -110,6 +127,48 @@ namespace CloudPlus.Services.Office365.Subscription
 
             throw new Exception("Activate suspended subscription request failed!");
         }
+        //TAG
+        public async Task<List<Office365SubscriptionModel>> ActivateMultiSuspendedPartnerPlatformSubscriptionAsync(string office365CustomerId, List<string> office365SubscriptionIds)
+        {
+            var requestSuccess = false;
+            var attempts = 1;
+            do
+            {
+                try
+                {
+                    var existingallSubscription = await _partnerOperations.UserPartnerOperations.Customers.ById(office365CustomerId).Subscriptions.GetAsync();
+                    foreach (var office365SubscriptionId in office365SubscriptionIds)
+                    {
+                        var existingSubscription = await _partnerOperations.UserPartnerOperations.Customers.ById(office365CustomerId)
+                            .Subscriptions.ById(office365SubscriptionId).GetAsync();
+
+                        existingSubscription.Status = SubscriptionStatus.Active;
+
+                        var subscription = await _partnerOperations.UserPartnerOperations.Customers.ById(office365CustomerId)
+                            .Subscriptions.ById(office365SubscriptionId).PatchAsync(existingSubscription);
+
+                        await ConfirmSubscriptionStatusUpdate(office365CustomerId, subscription.Id, SubscriptionStatus.Active);
+                    }
+                    requestSuccess = true;
+                    return existingallSubscription.Items.Select(x => new Office365SubscriptionModel
+                    {
+                        Office365CustomerId = office365CustomerId,
+                        Office365SubscriptionId = x.Id,
+                        Office365OrderId = x.OrderId,
+                        Office365FriendlyName = x.FriendlyName,
+                        Quantity = x.Quantity
+                    }).ToList();
+                }
+                catch (Exception ex)
+                {
+                    this.Log().Error($"Activate suspended subscription request failed request failed! Attampt: {attempts}", ex);
+                    attempts++;
+                    await Task.Delay(3000);
+                }
+            } while (!requestSuccess && attempts < _retryAttempts);
+
+            throw new Exception("Activate suspended subscription request failed!");
+        }
 
         public async Task SuspendPartnerPlatformSubscriptionAsync(string office365CustomerId, string office365SubscriptionId)
         {
@@ -128,6 +187,38 @@ namespace CloudPlus.Services.Office365.Subscription
                         .Subscriptions.ById(office365SubscriptionId).PatchAsync(existingSubscription);
 
                     await ConfirmSubscriptionStatusUpdate(office365CustomerId, office365SubscriptionId, SubscriptionStatus.Suspended);
+
+                    requestSuccess = true;
+                }
+                catch (Exception ex)
+                {
+                    this.Log().Error($"Suspend subscription request failed! Attampt: {attempts}", ex);
+                    attempts++;
+                    await Task.Delay(3000);
+                }
+            } while (!requestSuccess && attempts < _retryAttempts);
+
+            if (!requestSuccess) throw new Exception("Suspended subscription request failed!");
+        }
+        //TAG
+        public async Task SuspendMultiPartnerPlatformSubscriptionAsync(string office365CustomerId, List<string> office365SubscriptionIds)
+        {
+            var requestSuccess = false;
+            var attempts = 1;
+            do
+            {
+                try
+                {
+                    var existingSubscriptions = await _partnerOperations.UserPartnerOperations.Customers.ById(office365CustomerId).Subscriptions.GetAsync();
+
+                    foreach (var item in existingSubscriptions.Items)
+                    {
+                        item.Status = SubscriptionStatus.Suspended;
+                        await _partnerOperations.UserPartnerOperations.Customers.ById(office365CustomerId)
+                      .Subscriptions.ById(item.Id).PatchAsync(item);
+
+                        await ConfirmSubscriptionStatusUpdate(office365CustomerId, item.Id, SubscriptionStatus.Suspended);
+                    }
 
                     requestSuccess = true;
                 }

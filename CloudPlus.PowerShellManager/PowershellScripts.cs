@@ -32,6 +32,23 @@
         public static string IsDomainVerified = "Domain\\IsCustomerDomainVerified.ps1";
         public static string IsDomainFederated = "Domain\\IsCustomerDomainFederated.ps1";
         public static string GetTransitionMatchingData = "Transition\\GetTransitionMatchingData.ps1";
+
+        public static string GetGroupsListAllTypes = "UserGroup\\GetGroupsList(AllTypes).ps1";
+
+        public static string AddDistributionGroup = "UserGroup\\AddDistributionGroup.ps1";
+        public static string AddDistributionGroupMember = "UserGroup\\AddDistributionGroupMember.ps1";
+        public static string AddO365Group = "UserGroup\\AddO365Group.ps1";
+        public static string AddO365GroupMember = "UserGroup\\AddO365GroupMember.ps1";
+        public static string AddSecurityGroup = "UserGroup\\AddSecurityGroup.ps1";
+        public static string AddSecurityGroupMember = "UserGroup\\AddSecurityGroupMember.ps1";
+        public static string GetUserGroupMemberships = "UserGroup\\GetUserGroupMemberships.ps1";
+        public static string RemoveDistributionGroup = "UserGroup\\RemoveDistributionGroup.ps1";
+        public static string RemoveDistributionGroupMember = "UserGroup\\RemoveDistributionGroupMember.ps1";
+        public static string RemoveO365Group = "UserGroup\\RemoveO365Group.ps1";
+        public static string RemoveO365GroupMember = "UserGroup\\RemoveO365GroupMember.ps1";
+        public static string RemoveSecurityGroup = "UserGroup\\RemoveSecurityGroup.ps1";
+        public static string RemoveSecurityGroupMember = "UserGroup\\RemoveSecurityGroupMember.ps1";
+       
         #endregion
     }
 }

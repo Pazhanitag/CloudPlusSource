@@ -24,7 +24,19 @@
         Office365UserChangeRoles,
         Office365Transition,
         Office365TransitionUserAndLicenses,
-        Office365TransitionDeletePartnerPlatformUser
+        Office365TransitionDeletePartnerPlatformUser,
+        Office365CreateSecurityGroup,
+        Office365CreateDistributionGroup,
+        Office365CreateO365Group,
+        Office365AddSecurityGroupMember,
+        Office365AddDistributionGroupMember,
+        Office365AddO365GroupMember,
+        Office365RemoveSecurityGroup,
+        Office365RemoveDistributionGroup,
+        Office365RemoveO365Group,
+        Office365RemoveSecurityGroupMember,
+        Office365RemoveDistributionGroupMember,
+        Office365RemoveO365GroupMember
         #endregion
     }
 }

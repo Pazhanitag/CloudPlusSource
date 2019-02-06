@@ -42,8 +42,8 @@
     <Reference Include="NewId, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
       <HintPath>..\packages\NewId.3.0.0\lib\net452\NewId.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,6 +55,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\Customer\ActivateMultiSuspendedDatabaseSubscription\ActivateMultiSuspendedDatabaseSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\ActivateMultiSuspendedDatabaseSubscription\ActivateMultiSuspendedDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\ActivateMultiSuspendedDatabaseSubscription\IActivateMultiSuspendedDatabaseSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\ActivateMultiSuspendedDatabaseSubscription\IActivateMultiSuspendedDatabaseSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\ActivateMultiSuspendedDatabaseSubscription\IActivateMultiSuspendedDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\ActivateMultiSuspendedPartnerPlatformSubscription\ActivateMultiSuspendedPartnerPlatformSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\ActivateMultiSuspendedPartnerPlatformSubscription\ActivateMultiSuspendedPartnerPlatformSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\ActivateMultiSuspendedPartnerPlatformSubscription\IActivateMultiSuspendedPartnerPlatformSubscriptionAcivity.cs" />
+    <Compile Include="Activities\Customer\ActivateMultiSuspendedPartnerPlatformSubscription\IActivateMultiSuspendedPartnerPlatformSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\ActivateMultiSuspendedPartnerPlatformSubscription\IActivateMultiSuspendedPartnerPlatformSubscriptionLog.cs" />
     <Compile Include="Activities\Customer\ActivateSuspendedPartnerPlatformSubscription\ActivateSuspendedPartnerPlatformSubscriptionActivity.cs" />
     <Compile Include="Activities\Customer\ActivateSuspendedPartnerPlatformSubscription\ActivateSuspendedPartnerPlatformSubscriptionLog.cs" />
     <Compile Include="Activities\Customer\ActivateSuspendedPartnerPlatformSubscription\IActivateSuspendedPartnerPlatformSubscriptionAcivity.cs" />
@@ -65,6 +75,11 @@
     <Compile Include="Activities\Customer\CreateDatabaseSubscription\ICreateDatabaseSubscriptionActivity.cs" />
     <Compile Include="Activities\Customer\CreateDatabaseSubscription\ICreateDatabaseSubscriptionArguments.cs" />
     <Compile Include="Activities\Customer\CreateDatabaseSubscription\ICreateDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\CreateOrderWithMultiItems\CreateOrderWithMultiItemsActivity.cs" />
+    <Compile Include="Activities\Customer\CreateOrderWithMultiItems\CreateOrderWithMultiItemsLog.cs" />
+    <Compile Include="Activities\Customer\CreateOrderWithMultiItems\ICreateOrderWithMultiItemsActivity.cs" />
+    <Compile Include="Activities\Customer\CreateOrderWithMultiItems\ICreateOrderWithMultiItemsArguments.cs" />
+    <Compile Include="Activities\Customer\CreateOrderWithMultiItems\ICreateOrderWithMultiItemsLog.cs" />
     <Compile Include="Activities\Customer\CreateOrder\CreateOrderActivity.cs" />
     <Compile Include="Activities\Customer\CreateOrder\CreateOrderLog.cs" />
     <Compile Include="Activities\Customer\CreateOrder\ICreateOrderActivity.cs" />
@@ -110,6 +125,16 @@
     <Compile Include="Activities\Customer\PartnerPlatformCustomerSubscription\IPartnerPlatformCustomerSubscriptionActivity.cs" />
     <Compile Include="Activities\Customer\PartnerPlatformCustomerSubscription\IPartnerPlatformCustomerSubscriptionArguments.cs" />
     <Compile Include="Activities\Customer\PartnerPlatformCustomerSubscription\IPartnerPlatformCustomerSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\SuspendMultiDatabasesubscription\ISuspendMultiDatabasesubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\SuspendMultiDatabasesubscription\ISuspendMultiDatabasesubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\SuspendMultiDatabasesubscription\ISuspendMultiDatabasesubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\SuspendMultiDatabasesubscription\SuspendMultiDatabasesubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\SuspendMultiDatabasesubscription\SuspendMultiDatabasesubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\SuspendMultiPartnerPlatformSubscription\ISuspendMultiPartnerPlatformSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\SuspendMultiPartnerPlatformSubscription\ISuspendMultiPartnerPlatformSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\SuspendMultiPartnerPlatformSubscription\ISuspendMultiPartnerPlatformSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\SuspendMultiPartnerPlatformSubscription\SuspendMultiPartnerPlatformSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\SuspendMultiPartnerPlatformSubscription\SuspendMultiPartnerPlatformSubscriptionLog.cs" />
     <Compile Include="Activities\Customer\SuspendPartnerPlatformSubscription\ISuspendPartnerPlatformSubscriptionActivity.cs" />
     <Compile Include="Activities\Customer\SuspendPartnerPlatformSubscription\ISuspendPartnerPlatformSubscriptionArguments.cs" />
     <Compile Include="Activities\Customer\SuspendPartnerPlatformSubscription\ISuspendPartnerPlatformSubscriptionLog.cs" />
@@ -131,6 +156,24 @@
     <Compile Include="Activities\Customer\UpdateDatabaseSubscription__\IUpdateDatabaseSubscriptionLog.cs" />
     <Compile Include="Activities\Customer\UpdateDatabaseSubscription__\UpdateDatabaseSubscriptionActivity.cs" />
     <Compile Include="Activities\Customer\UpdateDatabaseSubscription__\UpdateDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscriptionQuantity\IUpdateMultiDatabaseSubscriptionQuantityActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscriptionQuantity\IUpdateMultiDatabaseSubscriptionQuantityArguments.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscriptionQuantity\IUpdateMultiDatabaseSubscriptionQuantityLog.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscriptionQuantity\UpdateMultiDatabaseSubscriptionQuantityActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscriptionQuantity\UpdateMultiDatabaseSubscriptionQuantityLog.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscriptionState\IUpdateMultiDatabaseSubscriptionStateActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscriptionState\IUpdateMultiDatabaseSubscriptionStateArguments.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscriptionState\UpdateMultiDatabaseSubscriptionStateActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscription\IUpdateMultiDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscription\IUpdateMultiDatabaseSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscription\IUpdateMultiDatabaseSubscriptionArguments.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscription\UpdateMultiDatabaseSubscriptionActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiDatabaseSubscription\UpdateMultiDatabaseSubscriptionLog.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiPartnerPlatformSubscriptionQuantity\IUpdateMultiPartnerPlatformSubscriptionQuantityActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiPartnerPlatformSubscriptionQuantity\IUpdateMultiPartnerPlatformSubscriptionQuantityArguments.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiPartnerPlatformSubscriptionQuantity\IUpdateMultiPartnerPlatformSubscriptionQuantityLog.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiPartnerPlatformSubscriptionQuantity\UpdateMultiPartnerPlatformSubscriptionQuantityActivity.cs" />
+    <Compile Include="Activities\Customer\UpdateMultiPartnerPlatformSubscriptionQuantity\UpdateMultiPartnerPlatformSubscriptionQuantityLog.cs" />
     <Compile Include="Activities\Customer\UpdatePartnerPlatformSubscriptionQuantity\IUpdatePartnerPlatformSubscriptionQuantityActivity.cs" />
     <Compile Include="Activities\Customer\UpdatePartnerPlatformSubscriptionQuantity\IUpdatePartnerPlatformSubscriptionQuantityArguments.cs" />
     <Compile Include="Activities\Customer\UpdatePartnerPlatformSubscriptionQuantity\IUpdatePartnerPlatformSubscriptionQuantityLog.cs" />
@@ -185,6 +228,78 @@
     <Compile Include="Activities\Transition\DatabaseProvisionedStatusProvisioned\IDatabaseProvisionedStatusProvisionedLog.cs" />
     <Compile Include="Activities\Transition\DatabaseProvisionedStatusProvisioned\DatabaseProvisionedStatusProvisionedActivity.cs" />
     <Compile Include="Activities\Transition\DatabaseProvisionedStatusProvisioned\DatabaseProvisionedStatusProvisionedLog.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseDistributionGroupMember\CreateDatabaseDistributionGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseDistributionGroupMember\ICreateDatabaseDistributionGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseDistributionGroupMember\ICreateDatabaseDistributionGroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseDistributionGroup\CreateDatabaseDistributionGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseDistributionGroup\ICreateDatabaseDistributionGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseDistributionGroup\ICreateDatabaseDistributionGroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseO365GroupMember\CreateDatabaseO365GroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseO365GroupMember\ICreateDatabaseO365GroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseO365GroupMember\ICreateDatabaseO365GroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseO365Group\CreateDatabaseO365GroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseO365Group\ICreateDatabaseO365GroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseO365Group\ICreateDatabaseO365GroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseSecurityGroupMember\CreateDatabaseSecurityGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseSecurityGroupMember\ICreateDatabaseSecurityGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseSecurityGroupMember\ICreateDatabaseSecurityGroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseSecurityGroup\CreateDatabaseSecurityGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseSecurityGroup\ICreateDatabaseSecurityGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDatabaseSecurityGroup\ICreateDatabaseSecurityGroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateDistributionGroupMember\CreateDistributionGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDistributionGroupMember\ICreateDistributionGroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateDistributionGroupMember\ICreateDistributionGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDistributionGroup\CreateDistributionGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDistributionGroup\ICreateDistributionGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateDistributionGroup\ICreateDistributionGroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateO365GroupMember\CreateO365GroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateO365GroupMember\ICreateO365GroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateO365GroupMember\ICreateO365GroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateO365Group\CreateO365GroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateO365Group\ICreateO365GroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateO365Group\ICreateO365GroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateSecurityGroupMember\CreateSecurityGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateSecurityGroupMember\ICreateSecurityGroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateSecurityGroupMember\ICreateSecurityGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateSecurityGroup\CreateSecurityGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\CreateSecurityGroup\ICreateSecurityGroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\CreateSecurityGroup\ICreateSecurityGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseDistributionGroupMember\IRemoveDatabaseDistributionGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseDistributionGroupMember\IRemoveDatabaseDistributionGroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseDistributionGroupMember\RemoveDatabaseDistributionGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseDistributionGroup\IRemoveDatabaseDistributionGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseDistributionGroup\IRemoveDatabaseDistributionGroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseDistributionGroup\RemoveDatabaseDistributionGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseO365GroupMember\IRemoveDatabaseO365GroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseO365GroupMember\IRemoveDatabaseO365GroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseO365GroupMember\RemoveDatabaseO365GroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseO365Group\IRemoveDatabaseO365GroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseO365Group\IRemoveDatabaseO365GroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseO365Group\RemoveDatabaseO365GroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseSecurityGroupMember\IRemoveDatabaseSecurityGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseSecurityGroupMember\IRemoveDatabaseSecurityGroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseSecurityGroupMember\RemoveDatabaseSecurityGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseSecurityGroup\IRemoveDatabaseSecurityGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseSecurityGroup\IRemoveDatabaseSecurityGroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDatabaseSecurityGroup\RemoveDatabaseSecurityGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDistributionGroupMember\IRemoveDistributionGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDistributionGroupMember\IRemoveDistributionGroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDistributionGroupMember\RemoveDistributionGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDistributionGroup\IRemoveDistributionGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDistributionGroup\IRemoveDistributionGroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveDistributionGroup\RemoveDistributionGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveO365GroupMember\IRemoveO365GroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveO365GroupMember\IRemoveO365GroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveO365GroupMember\RemoveO365GroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveO365Group\IRemoveO365GroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveO365Group\IRemoveO365GroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveO365Group\RemoveO365GroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveSecurityGroupMember\IRemoveSecurityGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveSecurityGroupMember\IRemoveSecurityGroupMemberArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveSecurityGroupMember\RemoveSecurityGroupMemberActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveSecurityGroup\IRemoveSecurityGroupActivity.cs" />
+    <Compile Include="Activities\UserGroup\RemoveSecurityGroup\IRemoveSecurityGroupArguments.cs" />
+    <Compile Include="Activities\UserGroup\RemoveSecurityGroup\RemoveSecurityGroupActivity.cs" />
     <Compile Include="Activities\User\ActivateSoftDeletedDatabaseUser\ActivateSoftDeletedDatabaseUserActivity.cs" />
     <Compile Include="Activities\User\ActivateSoftDeletedDatabaseUser\ActivateSoftDeletedDatabaseUserLog.cs" />
     <Compile Include="Activities\User\ActivateSoftDeletedDatabaseUser\IActivateSoftDeletedDatabaseUserActivity.cs" />
@@ -265,12 +380,16 @@
     <Compile Include="Activities\User\SendUserSetupEmail\ISendUserSetupEmailArguments.cs" />
     <Compile Include="Activities\User\SendUserSetupEmail\SendUserSetupEmailActivity.cs" />
     <Compile Include="Mappers\ActivityOffice365CustomerArgumentsMapper.cs" />
+    <Compile Include="Mappers\ActivityOffice365UserChangeLicenseMapper.cs" />
     <Compile Include="Mappers\ActivityOffice365UserChangeRolesMapper.cs" />
+    <Compile Include="Mappers\ActivityOffice365UserGroupArgumentsMapper.cs" />
+    <Compile Include="Mappers\IActivityOffice365UserGroupArgumentsMapper.cs" />
     <Compile Include="Mappers\ActivityOffice365UserRestoreMapper.cs" />
     <Compile Include="Mappers\IActivityOffice365AddAdditionalDomainArgumentsMapper.cs" />
     <Compile Include="Mappers\ActivityOffice365UserArgumentsMapper.cs" />
     <Compile Include="Mappers\IActivityOffice365CustomerArgumentsMapper.cs" />
     <Compile Include="Mappers\IActivityOffice365UserArgumentsMapper.cs" />
+    <Compile Include="Mappers\IActivityOffice365UserChangeLicenseMapper.cs" />
     <Compile Include="Mappers\IActivityOffice365UserChangeRolesMapper.cs" />
     <Compile Include="Mappers\IActivityOffice365UserRestoreMapper.cs" />
     <Compile Include="Mappers\IActivityOffice365TransitionArgumentsMapper.cs" />
@@ -337,5 +456,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

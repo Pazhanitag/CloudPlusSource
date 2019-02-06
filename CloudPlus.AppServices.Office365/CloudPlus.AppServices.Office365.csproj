@@ -171,6 +171,8 @@
     <Compile Include="Workflow\Transition\Office365TransitionWorkflow.cs" />
     <Compile Include="Workflow\UserAssignLicense\IOffice365UserAssignLicenseWorkflow.cs" />
     <Compile Include="Workflow\UserAssignLicense\Office365UserAssignLicenseWorkflow.cs" />
+    <Compile Include="Workflow\UserChangeLicense\IOffice365UserChangeLicenseWorkflow.cs" />
+    <Compile Include="Workflow\UserChangeLicense\Office365UserChangeLicenseWorkflow.cs" />
     <Compile Include="Workflow\UserChangeRoles\IOffice365UserChangeRolesWorkflow.cs" />
     <Compile Include="Workflow\UserChangeRoles\Office365UserChangeRolesWorkflow.cs" />
     <Compile Include="Workflow\UserRemoveLicense\IOffice365UserRemoveLicenseWorkflow.cs" />

@@ -150,7 +150,7 @@ namespace CloudPlus.Api.Controllers.Company
         {
             if (User.CompanyId() != companyId)
                 return NotFound();
-
+            
             var companies = _companyService.GetCompanies(companyId, (CompanyType)companyType).ToList();
             
             foreach (var company in companies)

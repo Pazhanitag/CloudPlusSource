@@ -7,7 +7,7 @@ namespace CloudPlus.Api.ViewModels.Request.Office365
     {
         [Required]
         public int CompanyId { get; set; }
-        //[Required]
+        [Required]
         public string CloudPlusProductIdentifier { get; set; }
         [Required]
         public string UserPrincipalName { get; set; }

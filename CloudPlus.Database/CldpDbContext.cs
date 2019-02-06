@@ -44,6 +44,7 @@ namespace CloudPlus.Database
         public virtual DbSet<Office365License> Office365Licenses { get; set; }
         public virtual DbSet<Office365Offer> Office365Offers { get; set; }
         public virtual DbSet<Office365Role> Office365Roles { get; set; }
+       
 
 
         // Catalog V2
@@ -79,6 +80,11 @@ namespace CloudPlus.Database
         public virtual DbSet<Office365InCompatibleService> Office365InCompatibleService { get; set; }
         public virtual DbSet<Office365OfferAddon> Office365OfferAddons { get; set; }
         public virtual DbSet<ProductAddon> ProductAddons { get; set; }
+
+        public virtual DbSet<Office365SecurityGroup> Office365SecurityGroups { get; set; }
+        public virtual DbSet<Office365AndDistributionGroup> Office365AndDistributionGroups { get; set; }
+        public virtual DbSet<Office365SecurityGroupMember> Office365SecurityGroupMembers { get; set; }
+        public virtual DbSet<Office365AndDistributionGroupMember> Office365AndDistributionGroupMembers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

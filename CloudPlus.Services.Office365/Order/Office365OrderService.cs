@@ -67,6 +67,52 @@ namespace CloudPlus.Services.Office365.OrderService
             throw new Exception("Create order request failed!");
         }
 
+        public async Task<Office365OrderWithDetailsModel> CreateOrderWithMultiItemsAsync(Office365OrderWithDetailsModel orderModel)
+        {
+            var newOrder = new Order()
+            {
+                ReferenceCustomerId = orderModel.Office365CustomerId,
+                LineItems = orderModel.Office365OrderDetailsModels.Select(x => new OrderLineItem
+                {
+                    OfferId = x.Office365OfferId,
+                    FriendlyName = x.FriendlyName,
+                    Quantity = x.Quantity
+                })
+            };
+
+            var requestSuccess = false;
+            var attempts = 1;
+            do
+            {
+                try
+                {
+                    var createdOrder = await _partnerOperations.UserPartnerOperations
+                       .Customers.ById(orderModel.Office365CustomerId).Orders.CreateAsync(newOrder);
+
+                    orderModel.OrderId = createdOrder.Id;
+                    orderModel.Office365OrderDetailsModels.ForEach(x =>
+                    {
+                        x.SubscriptionId = createdOrder.LineItems.Where(i => i.OfferId == x.Office365OfferId).FirstOrDefault().SubscriptionId;
+                    });
+
+                    requestSuccess = true;
+
+                    await ConfirmCreateOrder(orderModel.Office365CustomerId, orderModel.OrderId);
+
+                    return orderModel;
+                }
+                catch (Exception ex)
+                {
+                    this.Log().Error($"Create order request failed! Attampt: {attempts}", ex);
+                    attempts++;
+                    await Task.Delay(3000);
+                }
+            } while (!requestSuccess && attempts < _retryAttempts);
+
+            throw new Exception("Create order with line items request failed!");
+        }
+
+
         private async Task ConfirmCreateOrder(string office365CustomerId, string office365OrderId)
         {
             var orderCreated = false;

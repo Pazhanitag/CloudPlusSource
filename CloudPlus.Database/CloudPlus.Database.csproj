@@ -89,25 +89,13 @@
     <Compile Include="Migrations\201812041653081_CustomSecureControlPanel.Designer.cs">
       <DependentUpon>201812041653081_CustomSecureControlPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812261442290_AddCompatibleMatrixOffice365.cs" />
-    <Compile Include="Migrations\201812261442290_AddCompatibleMatrixOffice365.Designer.cs">
-      <DependentUpon>201812261442290_AddCompatibleMatrixOffice365.cs</DependentUpon>
+    <Compile Include="Migrations\201901251141049_IncompatableLicenseandAddonservice.cs" />
+    <Compile Include="Migrations\201901251141049_IncompatableLicenseandAddonservice.Designer.cs">
+      <DependentUpon>201901251141049_IncompatableLicenseandAddonservice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901181506347_Addon and incompartable License Table.cs" />
-    <Compile Include="Migrations\201901181506347_Addon and incompartable License Table.Designer.cs">
-      <DependentUpon>201901181506347_Addon and incompartable License Table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901190525462_ProductAddonmapping.cs" />
-    <Compile Include="Migrations\201901190525462_ProductAddonmapping.Designer.cs">
-      <DependentUpon>201901190525462_ProductAddonmapping.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901190539109_RemoveProductAddOn.cs" />
-    <Compile Include="Migrations\201901190539109_RemoveProductAddOn.Designer.cs">
-      <DependentUpon>201901190539109_RemoveProductAddOn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901210852599_AddIsAddoninoffice365offer.cs" />
-    <Compile Include="Migrations\201901210852599_AddIsAddoninoffice365offer.Designer.cs">
-      <DependentUpon>201901210852599_AddIsAddoninoffice365offer.cs</DependentUpon>
+    <Compile Include="Migrations\201902051027382_Office365GroupsTableCreation.cs" />
+    <Compile Include="Migrations\201902051027382_Office365GroupsTableCreation.Designer.cs">
+      <DependentUpon>201902051027382_Office365GroupsTableCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -169,20 +157,11 @@
     <EmbeddedResource Include="Migrations\201812041653081_CustomSecureControlPanel.resx">
       <DependentUpon>201812041653081_CustomSecureControlPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812261442290_AddCompatibleMatrixOffice365.resx">
-      <DependentUpon>201812261442290_AddCompatibleMatrixOffice365.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901251141049_IncompatableLicenseandAddonservice.resx">
+      <DependentUpon>201901251141049_IncompatableLicenseandAddonservice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901181506347_Addon and incompartable License Table.resx">
-      <DependentUpon>201901181506347_Addon and incompartable License Table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901190525462_ProductAddonmapping.resx">
-      <DependentUpon>201901190525462_ProductAddonmapping.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901190539109_RemoveProductAddOn.resx">
-      <DependentUpon>201901190539109_RemoveProductAddOn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901210852599_AddIsAddoninoffice365offer.resx">
-      <DependentUpon>201901210852599_AddIsAddoninoffice365offer.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902051027382_Office365GroupsTableCreation.resx">
+      <DependentUpon>201902051027382_Office365GroupsTableCreation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
